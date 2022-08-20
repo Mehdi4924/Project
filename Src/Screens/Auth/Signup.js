@@ -13,13 +13,11 @@ import CustomTextInput from '../../Components/CustomTextInput';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
 
-export default function Login(props) {
+export default function Signup(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  useEffect(() => {
-    //this runs first
-  });
-
+  const [name, setName] = useState('');
+  const [confPassword, setConfPassword] = useState('');
   return (
     <View style={{flex: 1}}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -30,7 +28,15 @@ export default function Login(props) {
             resizeMode="contain"
           />
           <View>
-            <Text style={styles.loginText}>Login</Text>
+            <Text style={styles.loginText}>Signup</Text>
+            <CustomTextInput
+              mainView={styles.mainView}
+              textInputStyles={styles.textInputStyles}
+              value={name}
+              onChangeText={text => setName(text)}
+              placeholder="Name"
+              icon={false}
+            />
             <CustomTextInput
               mainView={styles.mainView}
               textInputStyles={styles.textInputStyles}
@@ -47,39 +53,28 @@ export default function Login(props) {
               placeholder="Password"
               icon={false}
             />
+            <CustomTextInput
+              mainView={styles.mainView}
+              textInputStyles={styles.textInputStyles}
+              value={confPassword}
+              onChangeText={text => setConfPassword(text)}
+              placeholder="Confirm Password"
+              icon={false}
+            />
             <Button
               isLoading={false}
-              name={'Login'}
+              name={'Signup'}
               textStyles={styles.textStyles}
               buttonStyles={[styles.buttonStyles, {marginVertical: hp(2)}]}
-              onPress={() => props.navigation.navigate('UserStack')}
+              onPress={() => props.navigation.navigate('Login')}
             />
-            <TouchableOpacity style={{width: wp(80), alignItems: 'flex-end'}}>
-              <Text style={{color: colors.primary, fontWeight: 'bold'}}>
-                Forgot Password?
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View>
             <Button
               isLoading={false}
               name={'Continue with google'}
               textStyles={[styles.textStyles, {color: colors.grey}]}
               buttonStyles={[
                 styles.buttonStyles,
-                {backgroundColor: colors.white, marginVertical: hp(1)},
-              ]}
-              onPress={() => null}
-              icon={true}
-              imageSource={require('../../Assets/Logo.png')}
-            />
-            <Button
-              isLoading={false}
-              name={'Continue with facebook'}
-              textStyles={[styles.textStyles, {color: colors.white}]}
-              buttonStyles={[
-                styles.buttonStyles,
-                {backgroundColor: '#1976D2', marginVertical: hp(1)},
+                {backgroundColor: colors.white},
               ]}
               onPress={() => null}
               icon={true}
@@ -88,11 +83,11 @@ export default function Login(props) {
           </View>
           <TouchableOpacity
             style={{width: wp(80), alignItems: 'center'}}
-            onPress={() => props.navigation.navigate('Signup')}>
+            onPress={() => props.navigation.navigate('Login')}>
             <Text style={{color: colors.primary}}>
-              Don't have account?
+              Already have account?
               <Text style={{color: colors.primary, fontWeight: 'bold'}}>
-                Signup
+                Login
               </Text>
             </Text>
           </TouchableOpacity>
@@ -114,8 +109,8 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: 'bold',
     fontSize: hp(4),
-    marginVertical: hp(2),
     alignSelf: 'center',
+    marginVertical: hp(2),
   },
   mainView: {
     flexDirection: 'row',

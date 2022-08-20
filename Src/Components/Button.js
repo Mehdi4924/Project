@@ -4,6 +4,7 @@ import {
   Text,
   ActivityIndicator,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import {colors} from '../Utils/Colors';
 import {hp, wp} from '../Utils/Responsive';
@@ -12,7 +13,10 @@ export default function Button(props) {
   return (
     <TouchableOpacity
       style={props.buttonStyles ? props.buttonStyles : styles.container}
-      onPress={() => props.onPress}>
+      onPress={props.onPress}>
+      {props.icon ? (
+        <Image source={props.imageSource} style={{width: 20, height: 20}} />
+      ) : null}
       {props.isLoading ? (
         <ActivityIndicator size={'small'} color={colors.white} />
       ) : (

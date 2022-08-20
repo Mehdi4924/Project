@@ -2,8 +2,9 @@ import React, {useEffect} from 'react';
 import {Image, View, StyleSheet, Text} from 'react-native';
 import Button from '../../Components/Button';
 import {colors} from '../../Utils/Colors';
-import {wp, hp} from '../../Utils/Responsive';
-export default function SelectRole(props) {
+import {hp, wp} from '../../Utils/Responsive';
+
+export default function AuthSelect(props) {
   useEffect(() => {
     //this runs first
   });
@@ -13,21 +14,21 @@ export default function SelectRole(props) {
       <View
         style={{flex: 1, justifyContent: 'space-around', alignItems: 'center'}}>
         <Image
-          source={require('../../Assets/roleimage.png')}
+          source={require('../../Assets/authselect.png')}
           style={{width: wp(90), height: hp(50)}}
           resizeMode={'contain'}
         />
         <View>
           <Button
             isLoading={false}
-            name={'Continue as User'}
+            name={'Login'}
             textStyles={styles.textStyles}
             buttonStyles={styles.buttonStyles}
-            onPress={() => props.navigation.navigate('AuthSelect')}
+            onPress={() => props.navigation.navigate('Login')}
           />
           <Button
             isLoading={false}
-            name={'Continue as Vendor'}
+            name={'Signup'}
             textStyles={styles.textStyles}
             buttonStyles={styles.buttonStyles}
             onPress={() => props.navigation.navigate('AuthSelect')}
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   buttonStyles: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     width: wp(80),
     height: hp(5),
     alignItems: 'center',
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   textStyles: {
-    color: colors.primary,
+    color: colors.white,
     fontWeight: 'bold',
   },
 });
