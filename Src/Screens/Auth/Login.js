@@ -55,7 +55,8 @@ export default function Login(props) {
               onPress={() => props.navigation.navigate('UserStack')}
             />
             <TouchableOpacity style={{width: wp(80), alignItems: 'flex-end'}}>
-              <Text style={{color: colors.primary, fontWeight: 'bold'}}>
+              <Text
+                style={{color: colors.primary, fontFamily: 'Poppins-Regular'}}>
                 Forgot Password?
               </Text>
             </TouchableOpacity>
@@ -89,9 +90,10 @@ export default function Login(props) {
           <TouchableOpacity
             style={{width: wp(80), alignItems: 'center'}}
             onPress={() => props.navigation.navigate('Signup')}>
-            <Text style={{color: colors.primary}}>
+            <Text
+              style={{color: colors.primary, fontFamily: 'Poppins-Regular'}}>
               Don't have account?
-              <Text style={{color: colors.primary, fontWeight: 'bold'}}>
+              <Text style={{color: colors.primary, fontFamily: 'Poppins-Bold'}}>
                 Signup
               </Text>
             </Text>
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   topImage: {widht: wp(20), height: hp(20), marginTop: hp(8)},
   loginText: {
     color: colors.primary,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
     fontSize: hp(4),
     marginVertical: hp(2),
     alignSelf: 'center',
@@ -121,10 +123,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    height: hp(7),
     width: wp(80),
     backgroundColor: colors.secondary,
     elevation: 5,
-    borderRadius: 20,
+    borderRadius: 30,
     paddingHorizontal: wp(4),
     marginVertical: hp(0.5),
   },
@@ -132,13 +135,14 @@ const styles = StyleSheet.create({
     width: wp(60),
     fontSize: hp(1.2),
     color: colors.black,
+    fontFamily: 'Poppins-Regular',
   },
   buttonStyles: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     backgroundColor: colors.primary,
     width: wp(80),
-    height: hp(5),
+    height: hp(7),
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
@@ -147,7 +151,7 @@ const styles = StyleSheet.create({
   },
   textStyles: {
     color: colors.white,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
     width: wp(60),
     textAlign: 'center',
   },

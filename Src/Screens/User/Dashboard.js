@@ -26,61 +26,37 @@ const dat = [
   },
   {
     image: require('../../Assets/dummyicon.png'),
+    name: 'Summer Collections',
+  },
+  {
+    image: require('../../Assets/dummyicon.png'),
     name: 'Sale',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
   },
 ];
 const data2 = [
   {
     image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
+    name: 'AC Leakage',
+    provider: 'Service Provider',
+    rating: 4.2,
+    previousAmount: 2000,
+    discountAmoount: 1500,
   },
   {
     image: require('../../Assets/dummyicon.png'),
-    name: 'Gift Voucher',
+    name: 'AC Repair',
+    provider: 'Service Provider',
+    rating: 3.2,
+    previousAmount: 2000,
+    discountAmoount: 1500,
   },
   {
     image: require('../../Assets/dummyicon.png'),
-    name: 'Sale',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
+    name: 'AC Instsallation',
+    provider: 'Service Provider',
+    rating: 2.2,
+    previousAmount: 2000,
+    discountAmoount: 1500,
   },
 ];
 export default function Dashboard(props) {
@@ -92,23 +68,29 @@ export default function Dashboard(props) {
           {/* Header */}
           <View style={styles.header}>
             <View style={styles.iconVIew}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => null}
+                style={{justifyContent: 'center'}}>
                 <Image
                   source={require('../../Assets/user.png')}
                   style={{width: 50, height: 50}}
                 />
               </TouchableOpacity>
               <View style={styles.notificationIconView}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => null}
+                  style={{justifyContent: 'center'}}>
                   <Image
-                    source={require('../../Assets/user.png')}
-                    style={{width: 50, height: 50}}
+                    source={require('../../Assets/phone.png')}
+                    style={{width: 30, height: 30}}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => null}
+                  style={{justifyContent: 'center'}}>
                   <Image
-                    source={require('../../Assets/user.png')}
-                    style={{width: 50, height: 50}}
+                    source={require('../../Assets/bellIcon.png')}
+                    style={{width: 30, height: 30}}
                   />
                 </TouchableOpacity>
               </View>
@@ -135,6 +117,7 @@ export default function Dashboard(props) {
                 marginVertical: hp(1),
                 height: hp(15),
               }}
+              onContainerPress={() => null}
               parentView={styles.parentView}
               ImageView={styles.ImageView}
               imageStyles={{width: wp(20), height: hp(10)}}
@@ -181,6 +164,8 @@ export default function Dashboard(props) {
             bookNowView={styles.bookNowView}
             mainImageView={styles.mainImageView}
             bookNowText={styles.bookNowText}
+            providerText={styles.providerText}
+            ratingView={styles.ratingView}
             onBookNowPress={() => props.navigation.navigate('BookService')}
           />
         </View>
@@ -208,12 +193,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    alignContent: 'center',
     paddingHorizontal: wp(5),
     width: wp(100),
   },
   notificationIconView: {
     flexDirection: 'row',
-    width: wp(30),
+    width: wp(20),
     justifyContent: 'space-between',
   },
   welcomeText: {
@@ -221,14 +207,15 @@ const styles = StyleSheet.create({
     width: wp(75),
     paddingTop: hp(1),
     alignSelf: 'center',
-    fontWeight: 'bold',
-    fontSize: hp(3),
+    fontFamily: 'Poppins-Bold',
+    fontSize: hp(2.5),
   },
   nameText: {
     color: colors.white,
     width: wp(75),
     alignSelf: 'center',
-    fontSize: hp(2.2),
+    fontSize: hp(2),
+    fontFamily: 'Poppins-Regular',
   },
   discountBackground: {
     backgroundColor: colors.primaryLight,
@@ -239,17 +226,18 @@ const styles = StyleSheet.create({
     marginHorizontal: wp(5),
   },
   discountText: {
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
     fontSize: hp(2),
     color: colors.primary,
   },
   servicesText: {
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
     fontSize: hp(2),
     color: colors.primary,
   },
   viewAll: {
-    fontSize: hp(2),
+    fontSize: hp(1.8),
+    fontFamily: 'Poppins-Regular',
     color: colors.primary,
   },
   servicesBackground: {
@@ -276,7 +264,8 @@ const styles = StyleSheet.create({
   },
   textInputStyles: {
     width: wp(60),
-    fontSize: hp(2),
+    fontFamily: 'Poppins-Regular',
+    fontSize: hp(1.8),
     color: colors.black,
   },
   //flatlist styles
@@ -335,7 +324,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     elevation: 5,
   },
-  bookNowText: {color: colors.white, fontSize: hp(1.5)},
+  bookNowText: {
+    color: colors.white,
+    fontSize: hp(1.5),
+    fontFamily: 'Poppins-Regular',
+  },
   mainImageView: {flexDirection: 'row', justifyContent: 'space-between'},
   listImageView: {
     width: wp(30),
@@ -348,17 +341,22 @@ const styles = StyleSheet.create({
   },
   serviceNameText: {
     fontSize: hp(2),
-    fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: 'Poppins-Bold',
   },
   ratingView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: wp(30),
+    width: wp(25),
   },
   priceView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: wp(30),
+    width: wp(25),
+  },
+  providerText: {
+    fontSize: hp(1.8),
+    fontFamily: 'Poppins-Regular',
+    color: colors.black,
   },
 });

@@ -31,19 +31,15 @@ export default function OffersFlatlist(props) {
                 />
               </View>
               <View style={{width: wp(51), justifyContent: 'center'}}>
-                <Text style={props.serviceNameText}>AC Leakage</Text>
-                <Text>Service Provider</Text>
+                <Text style={props.serviceNameText}>{item.name}</Text>
+                <Text style={props.providerText}>{item.provider}</Text>
                 <View style={props.ratingView}>
-                  <Text style={{color: colors.primary, fontWeight: 'bold'}}>
-                    4.3
-                  </Text>
-                  <Text>4.3</Text>
+                  <Text style={styles.ratingText}>{item.rating}</Text>
+                  <Text style={styles.ratingText}>4.3</Text>
                 </View>
                 <View style={props.priceView}>
-                  <Text style={{textDecorationLine: 'line-through'}}>
-                    Rs-2950
-                  </Text>
-                  <Text style={{color: colors.primary}}>Rs-2000</Text>
+                  <Text style={styles.oldPrice}>{item.previousAmount}</Text>
+                  <Text style={styles.priceText}>{item.discountAmoount}</Text>
                 </View>
               </View>
             </View>
@@ -53,3 +49,21 @@ export default function OffersFlatlist(props) {
     />
   );
 }
+const styles = StyleSheet.create({
+  ratingText: {
+    color: colors.primary,
+    fontSize: hp(2),
+    fontFamily: 'Poppins-Regular',
+  },
+  oldPrice: {
+    textDecorationLine: 'line-through',
+    fontSize: hp(1.7),
+    fontFamily: 'Poppins-Regular',
+    color: colors.black,
+  },
+  priceText: {
+    color: colors.primary,
+    fontSize: hp(1.7),
+    fontFamily: 'Poppins-Regular',
+  },
+});

@@ -8,7 +8,11 @@ export default function OnBoarding(props) {
 
   return (
     <View style={styles.container}>
-      <Text onPress={()=>props.navigation.navigate("SelectRole")}>OnBoarding </Text>
+      <Text
+        style={{fontFamily: 'Poppins-Regular'}}
+        onPress={() => props.navigation.navigate('SelectRole')}>
+        OnBoarding{' '}
+      </Text>
     </View>
   );
 }

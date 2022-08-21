@@ -46,6 +46,8 @@ const styles = StyleSheet.create({
     width: wp(90),
     textAlign: 'center',
     paddingRight: wp(15),
+    fontSize: hp(1.8),
+    fontFamily: 'Poppins-Bold',
   },
   //input styles
   mainView: {
@@ -63,6 +65,7 @@ const styles = StyleSheet.create({
   textInputStyles: {
     width: wp(60),
     fontSize: hp(2),
+    fontFamily: 'Poppins-Bold',
     color: colors.black,
   },
 });

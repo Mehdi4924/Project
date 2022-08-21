@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
   },
   textStyles: {
     color: colors.white,
-    fontWeight: 'bold',
+    fontSize: hp(2),
+    fontFamily: 'Poppins-Bold',
   },
 });

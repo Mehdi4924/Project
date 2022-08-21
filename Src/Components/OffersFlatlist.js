@@ -36,6 +36,8 @@ export default function OffersFlatlist(props) {
                 numberOfLines={1}
                 style={{
                   color: colors.primary,
+                  fontFamily: 'Poppins-Regular',
+                  fontSize: hp(1.6),
                 }}>
                 {item.name}
               </Text>
