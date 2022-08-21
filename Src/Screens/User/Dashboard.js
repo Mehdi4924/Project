@@ -95,7 +95,7 @@ export default function Dashboard(props) {
           <View>
             <OffersFlatlist data={dat} />
           </View>
-          <View style={{height: hp(20)}}>
+          <View style={{height: hp(20),backgroundColor:'red'}}>
             <Text style={styles.servicesText}>Services</Text>
           </View>
           {/* <ServicesFlatList /> */}
