@@ -3,8 +3,9 @@ import {View, Text, ScrollView, StyleSheet, Image} from 'react-native';
 import CustomTextInput from '../../Components/CustomTextInput';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
-import OffersFlatlist from '../../Components/OffersFlatlist';
-const dat = [
+import RecommendedFlatList from '../../Components/RecommendedFlatList';
+import HeaderComponent from '../../Components/HeaderComponent';
+const data2 = [
   {
     image: require('../../Assets/dummyicon.png'),
     name: 'Azadi Offfer',
@@ -45,42 +46,27 @@ export default function ServiceDetails() {
     <View style={{flex: 1}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
-          <View style={styles.header}>
-            <View style={styles.headerMainView}>
-              <Image
-                source={require('../../Assets/user.png')}
-                style={{width: 30, height: 30}}
-              />
-              <Text style={styles.headerText}>AC SERVICES</Text>
-            </View>
-            <CustomTextInput
-              mainView={styles.mainView}
-              textInputStyles={styles.textInputStyles}
-              value={search}
-              onChangeText={text => setSearch(text)}
-              placeholder="Home"
-              icon={true}
-            />
-          </View>
+          <HeaderComponent
+            icon={require('../../Assets/user.png')}
+            onPress={() => props.navigation.goBack()}
+            name="All Services"
+            value={search}
+            onSearch={t => setSearch(t)}
+          />
           <View style={styles.servicesBackground}>
-            <Text style={styles.servicesText}>Services</Text>
-            <Text style={styles.viewAll}>View All</Text>
+            <Text style={styles.servicesText}>ALL AC SERVICES</Text>
           </View>
-          <View style={{height: hp(15)}}>
-            <OffersFlatlist
-              data={dat}
-              contentContainerStyle={{
-                paddingHorizontal: wp(5),
-                marginVertical: hp(1),
-                height: hp(15),
-              }}
-              onContainerPress={() =>
-                props.navigation.navigate('ServiceDetails')
-              }
-              parentView={styles.parentView1}
-              ImageView={styles.ImageView1}
-              imageStyles={{width: 50, height: 50}}
-              textView={styles.textView1}
+          <View style={{flex: 1, alignItems: 'center'}}>
+            <RecommendedFlatList
+              data={data2}
+              itemContainer={styles.itemContainer}
+              listImageView={styles.listImageView}
+              serviceNameText={styles.serviceNameText}
+              priceView={styles.priceView}
+              bookNowView={styles.bookNowView}
+              mainImageView={styles.mainImageView}
+              bookNowText={styles.bookNowText}
+              onBookNowPress={() => props.navigation.navigate('BookService')}
             />
           </View>
         </View>
@@ -90,6 +76,10 @@ export default function ServiceDetails() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    backgroundColor: colors.white,
+  },
   header: {
     height: hp(20),
     backgroundColor: colors.primary,
@@ -140,7 +130,54 @@ const styles = StyleSheet.create({
   },
   textInputStyles: {
     width: wp(60),
-    fontSize: hp(1.5),
+    fontSize: hp(2),
     color: colors.black,
+  },
+  //flatlist styles
+  //flatlist 2 styles
+  itemContainer: {
+    width: wp(90),
+    height: hp(20),
+    backgroundColor: colors.primaryLight,
+    padding: 10,
+    borderRadius: 10,
+    elevation: 5,
+    marginVertical: hp(1),
+    justifyContent: 'center',
+  },
+  bookNowView: {
+    position: 'absolute',
+    bottom: hp(1),
+    right: wp(2),
+    backgroundColor: colors.primary,
+    padding: 10,
+    borderRadius: 20,
+    elevation: 5,
+  },
+  bookNowText: {color: colors.white, fontSize: hp(1.5)},
+  mainImageView: {flexDirection: 'row', justifyContent: 'space-between'},
+  listImageView: {
+    width: wp(30),
+    height: hp(15),
+    backgroundColor: colors.white,
+    borderRadius: 10,
+    elevation: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  serviceNameText: {
+    fontSize: hp(2),
+    fontWeight: 'bold',
+    color: colors.primary,
+  },
+  ratingView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: wp(30),
+  },
+  priceView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: wp(30),
   },
 });

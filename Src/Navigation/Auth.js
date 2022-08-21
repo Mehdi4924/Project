@@ -10,29 +10,13 @@ const AuthStack = createStackNavigator();
 
 export default function Auth() {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator screenOptions={{headerShown: false}}>
       <AuthStack.Screen name={'Splash'} component={Splash} />
       <AuthStack.Screen name={'OnBoarding'} component={OnBoarding} />
-      <AuthStack.Screen
-        name={'SelectRole'}
-        component={SelectRole}
-        options={{headerShown: false}}
-      />
-      <AuthStack.Screen
-        name={'AuthSelect'}
-        component={AuthSelect}
-        options={{headerShown: false}}
-      />
-      <AuthStack.Screen
-        name={'Login'}
-        component={Login}
-        options={{headerShown: false}}
-      />
-      <AuthStack.Screen
-        name={'Signup'}
-        component={Signup}
-        options={{headerShown: false}}
-      />
+      <AuthStack.Screen name={'SelectRole'} component={SelectRole} />
+      <AuthStack.Screen name={'AuthSelect'} component={AuthSelect} />
+      <AuthStack.Screen name={'Login'} component={Login} />
+      <AuthStack.Screen name={'Signup'} component={Signup} />
     </AuthStack.Navigator>
   );
 }

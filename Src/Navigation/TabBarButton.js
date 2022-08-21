@@ -3,9 +3,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors} from '../Utils/Colors';
 import {hp, wp} from '../Utils/Responsive';
 export default function TabBarButton(props) {
-  console.log(props);
   const active = props.accessibilityState.selected;
-
   if (active) {
     return (
       <View style={styles.container}>

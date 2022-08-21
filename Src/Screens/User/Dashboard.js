@@ -144,7 +144,10 @@ export default function Dashboard(props) {
           {/* <ServicesFlatList /> */}
           <View style={styles.servicesBackground}>
             <Text style={styles.servicesText}>Services</Text>
-            <Text style={styles.viewAll}>View All</Text>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate('AllServices')}>
+              <Text style={styles.viewAll}>View All</Text>
+            </TouchableOpacity>
           </View>
           <View style={{height: hp(15)}}>
             <OffersFlatlist
@@ -165,9 +168,21 @@ export default function Dashboard(props) {
           </View>
           <View style={styles.servicesBackground}>
             <Text style={styles.servicesText}>Recommended</Text>
-            <Text style={styles.viewAll}>View All</Text>
+            <TouchableOpacity onPress={() => null}>
+              <Text style={styles.viewAll}>View All</Text>
+            </TouchableOpacity>
           </View>
-          <RecommendedFlatList data={data2} />
+          <RecommendedFlatList
+            data={data2}
+            itemContainer={styles.itemContainer}
+            listImageView={styles.listImageView}
+            serviceNameText={styles.serviceNameText}
+            priceView={styles.priceView}
+            bookNowView={styles.bookNowView}
+            mainImageView={styles.mainImageView}
+            bookNowText={styles.bookNowText}
+            onBookNowPress={() => props.navigation.navigate('BookService')}
+          />
         </View>
       </ScrollView>
     </View>
@@ -261,7 +276,7 @@ const styles = StyleSheet.create({
   },
   textInputStyles: {
     width: wp(60),
-    fontSize: hp(1.2),
+    fontSize: hp(2),
     color: colors.black,
   },
   //flatlist styles
@@ -299,5 +314,51 @@ const styles = StyleSheet.create({
     width: wp(25),
     alignItems: 'center',
     paddingVertical: hp(1),
+  },
+  //flatlist 2 styles
+  itemContainer: {
+    width: wp(90),
+    height: hp(20),
+    backgroundColor: colors.primaryLight,
+    padding: 10,
+    borderRadius: 10,
+    elevation: 5,
+    marginVertical: hp(1),
+    justifyContent: 'center',
+  },
+  bookNowView: {
+    position: 'absolute',
+    bottom: hp(1),
+    right: wp(2),
+    backgroundColor: colors.primary,
+    padding: 10,
+    borderRadius: 20,
+    elevation: 5,
+  },
+  bookNowText: {color: colors.white, fontSize: hp(1.5)},
+  mainImageView: {flexDirection: 'row', justifyContent: 'space-between'},
+  listImageView: {
+    width: wp(30),
+    height: hp(15),
+    backgroundColor: colors.white,
+    borderRadius: 10,
+    elevation: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  serviceNameText: {
+    fontSize: hp(2),
+    fontWeight: 'bold',
+    color: colors.primary,
+  },
+  ratingView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: wp(30),
+  },
+  priceView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: wp(30),
   },
 });

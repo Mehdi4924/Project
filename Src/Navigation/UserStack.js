@@ -9,6 +9,8 @@ const BottomTabsNestedScreens = createStackNavigator();
 import {useNavigation} from '@react-navigation/native';
 import TabBarButton from './TabBarButton';
 import ServiceDetails from '../Screens/User/ServiecDetails';
+import BookService from '../Screens/User/BookService';
+import AllServices from '../Screens/User/AllServices';
 export default function UserStack() {
   return (
     <UserNavigator.Navigator screenOptions={{headerShown: false}}>
@@ -80,6 +82,14 @@ function BottomTabsNested() {
       <BottomTabsNestedScreens.Screen
         name="ServiceDetails"
         component={ServiceDetails}
+      />
+      <BottomTabsNestedScreens.Screen
+        name="BookService"
+        component={BookService}
+      />
+      <BottomTabsNestedScreens.Screen
+        name="AllServices"
+        component={AllServices}
       />
     </BottomTabsNestedScreens.Navigator>
   );
