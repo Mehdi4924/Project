@@ -12,9 +12,44 @@ import {
 import Button from '../../Components/Button';
 import CustomTextInput from '../../Components/CustomTextInput';
 import OffersFlatlist from '../../Components/OffersFlatlist';
+import RecommendedFlatList from '../../Components/RecommendedFlatList';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
 const dat = [
+  {
+    image: require('../../Assets/dummyicon.png'),
+    name: 'Azadi Offfer',
+  },
+  {
+    image: require('../../Assets/dummyicon.png'),
+    name: 'Gift Voucher',
+  },
+  {
+    image: require('../../Assets/dummyicon.png'),
+    name: 'Sale',
+  },
+  {
+    image: require('../../Assets/dummyicon.png'),
+    name: 'Azadi Offfer',
+  },
+  {
+    image: require('../../Assets/dummyicon.png'),
+    name: 'Azadi Offfer',
+  },
+  {
+    image: require('../../Assets/dummyicon.png'),
+    name: 'Azadi Offfer',
+  },
+  {
+    image: require('../../Assets/dummyicon.png'),
+    name: 'Azadi Offfer',
+  },
+  {
+    image: require('../../Assets/dummyicon.png'),
+    name: 'Azadi Offfer',
+  },
+];
+const data2 = [
   {
     image: require('../../Assets/dummyicon.png'),
     name: 'Azadi Offfer',
@@ -92,13 +127,47 @@ export default function Dashboard(props) {
           <View style={styles.discountBackground}>
             <Text style={styles.discountText}>Discount/Offers</Text>
           </View>
-          <View>
-            <OffersFlatlist data={dat} />
-          </View>
-          <View style={{height: hp(20),backgroundColor:'red'}}>
-            <Text style={styles.servicesText}>Services</Text>
+          <View style={{height: hp(15)}}>
+            <OffersFlatlist
+              data={dat}
+              contentContainerStyle={{
+                paddingHorizontal: wp(5),
+                marginVertical: hp(1),
+                height: hp(15),
+              }}
+              parentView={styles.parentView}
+              ImageView={styles.ImageView}
+              imageStyles={{width: wp(20), height: hp(10)}}
+              textView={styles.textView}
+            />
           </View>
           {/* <ServicesFlatList /> */}
+          <View style={styles.servicesBackground}>
+            <Text style={styles.servicesText}>Services</Text>
+            <Text style={styles.viewAll}>View All</Text>
+          </View>
+          <View style={{height: hp(15)}}>
+            <OffersFlatlist
+              data={dat}
+              contentContainerStyle={{
+                paddingHorizontal: wp(5),
+                marginVertical: hp(1),
+                height: hp(15),
+              }}
+              onContainerPress={() =>
+                props.navigation.navigate('ServiceDetails')
+              }
+              parentView={styles.parentView1}
+              ImageView={styles.ImageView1}
+              imageStyles={{width: 50, height: 50}}
+              textView={styles.textView1}
+            />
+          </View>
+          <View style={styles.servicesBackground}>
+            <Text style={styles.servicesText}>Recommended</Text>
+            <Text style={styles.viewAll}>View All</Text>
+          </View>
+          <RecommendedFlatList data={data2} />
         </View>
       </ScrollView>
     </View>
@@ -107,7 +176,6 @@ export default function Dashboard(props) {
 
 const styles = StyleSheet.create({
   container: {
-    height: hp(100),
     alignItems: 'center',
     backgroundColor: colors.white,
   },
@@ -165,22 +233,71 @@ const styles = StyleSheet.create({
     fontSize: hp(2),
     color: colors.primary,
   },
+  viewAll: {
+    fontSize: hp(2),
+    color: colors.primary,
+  },
+  servicesBackground: {
+    backgroundColor: colors.white,
+    alignSelf: 'flex-start',
+    marginHorizontal: wp(5),
+    marginVertical: hp(2),
+    width: wp(90),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   //Input Styles
   mainView: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: hp(5),
+    height: hp(7),
     width: wp(80),
     backgroundColor: colors.secondary,
     elevation: 5,
-    borderRadius: 20,
+    borderRadius: 30,
     paddingHorizontal: wp(4),
-    marginVertical: hp(2),
+    marginVertical: hp(1),
   },
   textInputStyles: {
     width: wp(60),
     fontSize: hp(1.2),
     color: colors.black,
+  },
+  //flatlist styles
+  parentView: {
+    alignItems: 'center',
+    marginHorizontal: wp(1),
+  },
+  ImageView: {
+    width: wp(25),
+    alignItems: 'center',
+    backgroundColor: colors.white,
+    elevation: 5,
+    height: hp(10),
+    borderRadius: 10,
+  },
+  textView: {
+    width: wp(25),
+    alignItems: 'center',
+    paddingVertical: hp(1),
+  },
+  //flatlist styles 1
+  parentView1: {
+    alignItems: 'center',
+  },
+  ImageView1: {
+    width: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.white,
+    elevation: 5,
+    height: 60,
+    borderRadius: 50,
+  },
+  textView1: {
+    width: wp(25),
+    alignItems: 'center',
+    paddingVertical: hp(1),
   },
 });

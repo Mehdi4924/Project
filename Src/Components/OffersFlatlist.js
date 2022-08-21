@@ -14,23 +14,24 @@ export default function OffersFlatlist(props) {
   return (
     <FlatList
       data={props.data}
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
       horizontal={true}
-      contentContainerStyle={{
-        paddingHorizontal: wp(5),
-        marginVertical: hp(1),
-      }}
+      contentContainerStyle={props.contentContainerStyle}
       keyExtractor={({item, index}) => index}
       renderItem={({item, index}) => {
         return (
-          <TouchableOpacity style={styles.parentView}>
-            <View style={styles.ImageView}>
+          <TouchableOpacity
+            style={props.parentView}
+            onPress={() => props.onContainerPress()}>
+            <View style={props.ImageView}>
               <Image
                 source={item.image}
-                style={{width: wp(20), height: hp(10)}}
+                style={props.imageStyles}
                 resizeMode="contain"
               />
             </View>
-            <View style={styles.textView}>
+            <View style={props.textView}>
               <Text
                 numberOfLines={1}
                 style={{
@@ -45,23 +46,3 @@ export default function OffersFlatlist(props) {
     />
   );
 }
-
-const styles = StyleSheet.create({
-  parentView: {
-    alignItems: 'center',
-    marginHorizontal: wp(1),
-  },
-  ImageView: {
-    width: wp(25),
-    alignItems: 'center',
-    backgroundColor: colors.white,
-    elevation: 5,
-    height: hp(10),
-    borderRadius: 10,
-  },
-  textView: {
-    width: wp(25),
-    alignItems: 'center',
-    paddingVertical: hp(0.5),
-  },
-});
