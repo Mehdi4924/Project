@@ -6,27 +6,35 @@ import CustomTextInput from './CustomTextInput';
 
 export default function HeaderComponent(props) {
   return (
-    <View style={styles.header}>
+    <View
+      style={[
+        styles.header,
+        {
+          height: !props.search ? hp(20) : hp(15),
+        },
+      ]}>
       <View style={styles.headerMainView}>
         <TouchableOpacity onPress={() => props.onPress()}>
           <Image source={props.icon} style={{width: 30, height: 30}} />
         </TouchableOpacity>
         <Text style={styles.headerText}>{props.name}</Text>
       </View>
-      <CustomTextInput
-        mainView={styles.mainView}
-        textInputStyles={styles.textInputStyles}
-        value={props.value}
-        onChangeText={text => props.onSearch(text)}
-        placeholder="Search"
-        icon={true}
-      />
+      {!props.search ? (
+        <CustomTextInput
+          mainView={styles.mainView}
+          textInputStyles={styles.textInputStyles}
+          value={props.value}
+          onChangeText={text => props.onSearch(text)}
+          placeholder="Search"
+          icon={true}
+          placeholderTextColor={colors.primary}
+        />
+      ) : null}
     </View>
   );
 }
 const styles = StyleSheet.create({
   header: {
-    height: hp(20),
     backgroundColor: colors.primary,
     width: wp(100),
     borderBottomLeftRadius: 25,
@@ -64,8 +72,8 @@ const styles = StyleSheet.create({
   },
   textInputStyles: {
     width: wp(60),
-    fontSize: hp(2),
-    fontFamily: 'Poppins-Bold',
-    color: colors.black,
+    fontSize: hp(1.6),
+    fontFamily: 'Poppins-Regular',
+    color: colors.primary,
   },
 });

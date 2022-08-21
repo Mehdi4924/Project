@@ -11,6 +11,7 @@ export default function CustomTextInput(props) {
         placeholder={props.placeholder}
         onChangeText={t => props.onChangeText(t)}
         style={props.textInputStyles}
+        placeholderTextColor={props.placeholderTextColor}
       />
       {props.icon ? (
         <Image

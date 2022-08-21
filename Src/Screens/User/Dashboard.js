@@ -86,7 +86,7 @@ export default function Dashboard(props) {
                   />
                 </TouchableOpacity>
                 <TouchableOpacity
-                  onPress={() => null}
+                  onPress={() => props.navigation.navigate('Notifications')}
                   style={{justifyContent: 'center'}}>
                   <Image
                     source={require('../../Assets/bellIcon.png')}
@@ -151,7 +151,8 @@ export default function Dashboard(props) {
           </View>
           <View style={styles.servicesBackground}>
             <Text style={styles.servicesText}>Recommended</Text>
-            <TouchableOpacity onPress={() => null}>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate('Recommended')}>
               <Text style={styles.viewAll}>View All</Text>
             </TouchableOpacity>
           </View>

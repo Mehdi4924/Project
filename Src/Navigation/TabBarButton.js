@@ -13,7 +13,12 @@ export default function TabBarButton(props) {
             style={{width: 35, height: 35}}
             resizeMode="contain"
           />
-          <Text style={{color: active ? colors.primary : colors.black}}>
+          <Text
+            style={{
+              color: active ? colors.primary : colors.black,
+              fontFamily: 'Poppins-Regular',
+              fontSize: hp(1.6),
+            }}>
             {props.name}
           </Text>
         </TouchableOpacity>

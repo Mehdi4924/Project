@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
   buttonStyles: {
     backgroundColor: colors.primary,
     width: wp(80),
-    height: hp(5),
+    height: hp(7),
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 20,
+    borderRadius: 30,
     marginVertical: hp(1),
     elevation: 4,
   },
