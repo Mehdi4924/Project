@@ -30,6 +30,7 @@ export default function HeaderComponent(props) {
           placeholderTextColor={colors.primary}
         />
       ) : null}
+      
     </View>
   );
 }

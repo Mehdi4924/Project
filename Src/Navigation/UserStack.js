@@ -3,9 +3,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Dashboard from '../Screens/User/Dashboard';
 import Login from '../Screens/Auth/Login';
-const BottomTabs = createBottomTabNavigator();
-const UserNavigator = createStackNavigator();
-const BottomTabsNestedScreens = createStackNavigator();
 import {useNavigation} from '@react-navigation/native';
 import TabBarButton from './TabBarButton';
 import ServiceDetails from '../Screens/User/ServiecDetails';
@@ -13,6 +10,14 @@ import BookService from '../Screens/User/BookService';
 import AllServices from '../Screens/User/AllServices';
 import Recommended from '../Screens/User/Recommended';
 import Notifications from '../Screens/User/Notifications';
+import Orders from '../Screens/User/Orders';
+import OrderDetails from '../Screens/User/OrderDetails';
+
+const BottomTabs = createBottomTabNavigator();
+const UserNavigator = createStackNavigator();
+const BottomTabsNestedScreens = createStackNavigator();
+const BottomTabsOrdersNested = createStackNavigator();
+
 export default function UserStack() {
   return (
     <UserNavigator.Navigator screenOptions={{headerShown: false}}>
@@ -44,15 +49,15 @@ function UserNavigatorScreens() {
         }}
       />
       <BottomTabs.Screen
-        name="Login"
-        component={Login}
+        name="BottomTabsOrders"
+        component={BottomTabsOrders}
         options={{
           tabBarButton: props => (
             <TabBarButton
               imgSrc={require('../Assets/user.png')}
               {...props}
-              name="Home"
-              onPress={() => navigation.navigate('Login')}
+              name="Orders"
+              onPress={() => navigation.navigate('BottomTabsOrders')}
             />
           ),
         }}
@@ -102,5 +107,33 @@ function BottomTabsNested() {
         component={Notifications}
       />
     </BottomTabsNestedScreens.Navigator>
+  );
+}
+
+function BottomTabsOrders() {
+  return (
+    <BottomTabsOrdersNested.Navigator screenOptions={{headerShown: false}}>
+      <BottomTabsOrdersNested.Screen name="Orders" component={Orders} />
+      <BottomTabsOrdersNested.Screen
+        name="OrderDetails"
+        component={OrderDetails}
+      />
+      {/* <BottomTabsOrdersNested.Screen
+        name="AllServices"
+        component={AllServices}
+      />
+      <BottomTabsOrdersNested.Screen
+        name="Recommended"
+        component={Recommended}
+      />
+      <BottomTabsOrdersNested.Screen
+        name="Notifications"
+        component={Notifications}
+      />
+      <BottomTabsOrdersNested.Screen
+        name="OrderDetails"
+        component={OrderDetails}
+      /> */}
+    </BottomTabsOrdersNested.Navigator>
   );
 }

@@ -154,5 +154,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Bold',
     width: wp(60),
     textAlign: 'center',
+    fontSize: hp(1.8),
   },
 });

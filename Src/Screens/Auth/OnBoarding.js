@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {Image, View, StyleSheet, Text} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default function OnBoarding(props) {
   useEffect(() => {
@@ -8,11 +9,9 @@ export default function OnBoarding(props) {
 
   return (
     <View style={styles.container}>
-      <Text
-        style={{fontFamily: 'Poppins-Regular'}}
-        onPress={() => props.navigation.navigate('SelectRole')}>
-        OnBoarding{' '}
-      </Text>
+      <TouchableOpacity onPress={() => props.navigation.navigate('SelectRole')}>
+        <Text style={{fontFamily: 'Poppins-Regular'}}>OnBoarding </Text>
+      </TouchableOpacity>
     </View>
   );
 }
