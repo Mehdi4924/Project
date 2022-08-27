@@ -12,6 +12,7 @@ import Recommended from '../Screens/User/Recommended';
 import Notifications from '../Screens/User/Notifications';
 import Orders from '../Screens/User/Orders';
 import OrderDetails from '../Screens/User/OrderDetails';
+import TrackOrder from '../Screens/User/TrackOrder';
 
 const BottomTabs = createBottomTabNavigator();
 const UserNavigator = createStackNavigator();
@@ -118,11 +119,8 @@ function BottomTabsOrders() {
         name="OrderDetails"
         component={OrderDetails}
       />
-      {/* <BottomTabsOrdersNested.Screen
-        name="AllServices"
-        component={AllServices}
-      />
-      <BottomTabsOrdersNested.Screen
+      <BottomTabsOrdersNested.Screen name="TrackOrder" component={TrackOrder} />
+      {/*  <BottomTabsOrdersNested.Screen
         name="Recommended"
         component={Recommended}
       />

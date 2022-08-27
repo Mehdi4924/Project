@@ -10,12 +10,16 @@ export default function HeaderComponent(props) {
       style={[
         styles.header,
         {
-          height: !props.search ? hp(20) : hp(15),
+          height: !props.search ? hp(20) : hp(12),
         },
       ]}>
       <View style={styles.headerMainView}>
         <TouchableOpacity onPress={() => props.onPress()}>
-          <Image source={props.icon} style={{width: 30, height: 30}} />
+          <Image
+            source={props.icon}
+            style={{width: 20, height: 20}}
+            resizeMode="contain"
+          />
         </TouchableOpacity>
         <Text style={styles.headerText}>{props.name}</Text>
       </View>
@@ -30,7 +34,6 @@ export default function HeaderComponent(props) {
           placeholderTextColor={colors.primary}
         />
       ) : null}
-      
     </View>
   );
 }

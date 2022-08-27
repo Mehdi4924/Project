@@ -49,7 +49,7 @@ export default function Orders(props) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <HeaderComponent
-            icon={require('../../Assets/user.png')}
+            icon={require('../../Assets/arrowBack.png')}
             onPress={() => props.navigation.goBack()}
             name="MY ORDERS"
             search={true}
@@ -84,7 +84,7 @@ export default function Orders(props) {
                 : flatData.filter(item => item.status == 'Scheduled')
             }
             contentContainerStyle={{
-              marginVertical: hp(1),
+              marginVertical: hp(5),
               width: wp(100),
               alignItems: 'center',
             }}
@@ -169,6 +169,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingVertical: hp(1),
     paddingHorizontal: wp(5),
+    borderColor: colors.primary,
+    borderWidth: 1,
   },
   listIconView: {
     flexDirection: 'row',

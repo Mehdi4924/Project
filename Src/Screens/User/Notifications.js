@@ -11,14 +11,14 @@ import {FlatList} from 'react-native-gesture-handler';
 import HeaderComponent from '../../Components/HeaderComponent';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
-export default function Notifications() {
+export default function Notifications(props) {
   const [search, setSearch] = useState('');
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <HeaderComponent
-            icon={require('../../Assets/user.png')}
+            icon={require('../../Assets/arrowBack.png')}
             onPress={() => props.navigation.goBack()}
             name="NOTIFICATIONS"
             value={search}

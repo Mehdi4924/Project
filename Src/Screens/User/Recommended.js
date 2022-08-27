@@ -37,7 +37,7 @@ export default function Recommended(props) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <HeaderComponent
-            icon={require('../../Assets/user.png')}
+            icon={require('../../Assets/arrowBack.png')}
             onPress={() => props.navigation.goBack()}
             name="BOOKING SERVICE"
             value={search}
