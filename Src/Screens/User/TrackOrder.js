@@ -1,5 +1,4 @@
-import {color} from '@rneui/base';
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Image,
   ScrollView,
@@ -8,10 +7,14 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+// import StarRating from 'react-native-star-rating';
 import Button from '../../Components/Button';
 import HeaderComponent from '../../Components/HeaderComponent';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
+import {Rating} from 'react-native-ratings';
+import CustomTextInput from '../../Components/CustomTextInput';
+
 const steps = [
   {
     name: 'Order Recieved',
@@ -50,6 +53,7 @@ const steps = [
   },
 ];
 export default function TrackOrder(props) {
+  const [review, setReview] = useState('');
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -166,6 +170,34 @@ export default function TrackOrder(props) {
               );
             })}
           </View>
+          <View style={{width: wp(70)}}>
+            <Text style={{fontFamily: 'Poppins-Bold', color: colors.primary}}>
+              Rate & Review
+            </Text>
+            <Rating
+              ratingCount={5}
+              imageSize={hp(3)}
+              onFinishRating={null}
+              ratingColor={colors.primary}
+              type="custom"
+              style={{alignSelf: 'flex-start', marginVertical: hp(1)}}
+            />
+            <CustomTextInput
+              mainView={styles.mainInputView}
+              textInputStyles={styles.textInputStyles}
+              value={review}
+              onChangeText={text => setPassword(text)}
+              placeholder="Are You Satisfied With Our Service?"
+              icon={false}
+            />
+            <Button
+              isLoading={false}
+              name={'Done'}
+              textStyles={styles.textStyles}
+              buttonStyles={styles.buttonStyles}
+              onPress={() => null}
+            />
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -264,5 +296,48 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Bold',
     fontSize: hp(1.7),
     width: wp(38),
+  },
+
+  //text iut
+  mainInputView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: hp(15),
+    width: wp(70),
+    backgroundColor: colors.white,
+    elevation: 5,
+    borderRadius: 10,
+    paddingHorizontal: wp(4),
+    marginVertical: hp(0.5),
+  },
+  textInputStyles: {
+    width: wp(60),
+    height: hp(15),
+    fontSize: hp(1.5),
+    color: colors.grey,
+    fontFamily: 'Poppins-Regular',
+    textAlignVertical: 'top',
+  },
+  //bttn
+  buttonStyles: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: colors.primary,
+    width: wp(20),
+    height: hp(6),
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    marginVertical: hp(1),
+    elevation: 4,
+    alignSelf: 'flex-end',
+  },
+  textStyles: {
+    color: colors.white,
+    fontFamily: 'Poppins-Bold',
+    width: wp(20),
+    textAlign: 'center',
+    fontSize: hp(1.8),
   },
 });

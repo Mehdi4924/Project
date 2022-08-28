@@ -7,6 +7,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+import {Rating} from 'react-native-ratings';
 import {colors} from '../Utils/Colors';
 import {hp, wp} from '../Utils/Responsive';
 
@@ -33,9 +34,19 @@ export default function OffersFlatlist(props) {
               <View style={{width: wp(51), justifyContent: 'center'}}>
                 <Text style={props.serviceNameText}>{item.name}</Text>
                 <Text style={props.providerText}>{item.provider}</Text>
-                <View style={props.ratingView}>
+                <View style={styles.ratingView}>
                   <Text style={styles.ratingText}>{item.rating}</Text>
-                  <Text style={styles.ratingText}>4.3</Text>
+                  <Rating
+                    ratingCount={5}
+                    startingValue={item.rating}
+                    imageSize={hp(2)}
+                    onFinishRating={null}
+                    ratingColor={colors.primary}
+                    ratingBackgroundColor={colors.white}
+                    tintColor={colors.primaryLight}
+                    readonly={true}
+                    style={{alignSelf: 'flex-start', marginVertical: hp(1)}}
+                  />
                 </View>
                 <View style={props.priceView}>
                   <Text style={styles.oldPrice}>{item.previousAmount}</Text>
@@ -65,5 +76,11 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: hp(1.7),
     fontFamily: 'Poppins-Regular',
+  },
+  ratingView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: wp(25),
   },
 });

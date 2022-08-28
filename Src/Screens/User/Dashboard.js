@@ -167,7 +167,11 @@ export default function Dashboard(props) {
             bookNowText={styles.bookNowText}
             providerText={styles.providerText}
             ratingView={styles.ratingView}
-            onBookNowPress={() => props.navigation.navigate('BookService')}
+            onBookNowPress={() =>
+              props.navigation.navigate('BottomTabsOrders', {
+                screen: 'BookService',
+              })
+            }
           />
         </View>
       </ScrollView>

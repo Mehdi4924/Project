@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Button from '../../Components/Button';
+import CustomTextInput from '../../Components/CustomTextInput';
 import HeaderComponent from '../../Components/HeaderComponent';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
@@ -60,6 +61,7 @@ export default function OrderDetails(props) {
           buttonStyles={styles.buttonStyles}
           onPress={() => props.navigation.navigate('TrackOrder')}
         />
+        
       </ScrollView>
     </View>
   );
@@ -142,4 +144,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: hp(1.8),
   },
+  
 });

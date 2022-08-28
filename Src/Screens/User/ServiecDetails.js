@@ -66,6 +66,8 @@ export default function ServiceDetails() {
               bookNowView={styles.bookNowView}
               mainImageView={styles.mainImageView}
               bookNowText={styles.bookNowText}
+              providerText={styles.providerText}
+              ratingView={styles.ratingView}
               onBookNowPress={() => props.navigation.navigate('BookService')}
             />
           </View>
@@ -154,7 +156,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     elevation: 5,
   },
-  bookNowText: {color: colors.white, fontSize: hp(1.5)},
+  bookNowText: {
+    color: colors.white,
+    fontSize: hp(1.5),
+    fontFamily: 'Poppins-Regular',
+  },
   mainImageView: {flexDirection: 'row', justifyContent: 'space-between'},
   listImageView: {
     width: wp(30),
@@ -167,17 +173,23 @@ const styles = StyleSheet.create({
   },
   serviceNameText: {
     fontSize: hp(2),
-    fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: 'Poppins-Bold',
   },
   ratingView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: wp(30),
+    width: wp(55),
+    
   },
   priceView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: wp(30),
+    width: wp(25),
+  },
+  providerText: {
+    fontSize: hp(1.8),
+    fontFamily: 'Poppins-Regular',
+    color: colors.black,
   },
 });

@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: hp(8),
     position: 'absolute',
-    top: hp(7),
+    top: hp(9),
   },
   topText: {
     fontSize: hp(2),

@@ -13,7 +13,11 @@ export default function HeaderComponent(props) {
           height: !props.search ? hp(20) : hp(12),
         },
       ]}>
-      <View style={styles.headerMainView}>
+      <View
+        style={[
+          styles.headerMainView,
+          {paddingTop: !props.search ? 0 : hp(3)},
+        ]}>
         <TouchableOpacity onPress={() => props.onPress()}>
           <Image
             source={props.icon}
@@ -34,6 +38,7 @@ export default function HeaderComponent(props) {
           placeholderTextColor={colors.primary}
         />
       ) : null}
+      
     </View>
   );
 }

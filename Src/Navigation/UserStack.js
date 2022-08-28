@@ -13,11 +13,17 @@ import Notifications from '../Screens/User/Notifications';
 import Orders from '../Screens/User/Orders';
 import OrderDetails from '../Screens/User/OrderDetails';
 import TrackOrder from '../Screens/User/TrackOrder';
+import PaymentMethod from '../Screens/User/PaymentMethod';
+import CashOnDelivery from '../Screens/User/CashOnDelivery';
+import Profile from '../Screens/User/Profile';
+import ProfileDetails from '../Screens/User/ProfileDetails';
+import AddAddress from '../Screens/User/AddAddress';
 
 const BottomTabs = createBottomTabNavigator();
 const UserNavigator = createStackNavigator();
 const BottomTabsNestedScreens = createStackNavigator();
 const BottomTabsOrdersNested = createStackNavigator();
+const BottomTabsProfileNested = createStackNavigator();
 
 export default function UserStack() {
   return (
@@ -64,15 +70,15 @@ function UserNavigatorScreens() {
         }}
       />
       <BottomTabs.Screen
-        name="BottomTabsNestedw"
-        component={BottomTabsNested}
+        name="BottomTabsProfile"
+        component={BottomTabsProfile}
         options={{
           tabBarButton: props => (
             <TabBarButton
               imgSrc={require('../Assets/user.png')}
               {...props}
-              name="Home"
-              onPress={() => navigation.navigate('BottomTabsNested')}
+              name="Profile"
+              onPress={() => navigation.navigate('BottomTabsProfile')}
             />
           ),
         }}
@@ -90,10 +96,6 @@ function BottomTabsNested() {
       <BottomTabsNestedScreens.Screen
         name="ServiceDetails"
         component={ServiceDetails}
-      />
-      <BottomTabsNestedScreens.Screen
-        name="BookService"
-        component={BookService}
       />
       <BottomTabsNestedScreens.Screen
         name="AllServices"
@@ -119,7 +121,19 @@ function BottomTabsOrders() {
         name="OrderDetails"
         component={OrderDetails}
       />
+      <BottomTabsNestedScreens.Screen
+        name="BookService"
+        component={BookService}
+      />
       <BottomTabsOrdersNested.Screen name="TrackOrder" component={TrackOrder} />
+      <BottomTabsOrdersNested.Screen
+        name="PaymentMethod"
+        component={PaymentMethod}
+      />
+      <BottomTabsOrdersNested.Screen
+        name="CashOnDelivery"
+        component={CashOnDelivery}
+      />
       {/*  <BottomTabsOrdersNested.Screen
         name="Recommended"
         component={Recommended}
@@ -133,5 +147,20 @@ function BottomTabsOrders() {
         component={OrderDetails}
       /> */}
     </BottomTabsOrdersNested.Navigator>
+  );
+}
+function BottomTabsProfile() {
+  return (
+    <BottomTabsProfileNested.Navigator screenOptions={{headerShown: false}}>
+      <BottomTabsProfileNested.Screen name="Profile" component={Profile} />
+      <BottomTabsProfileNested.Screen
+        name="ProfileDetails"
+        component={ProfileDetails}
+      />
+      <BottomTabsProfileNested.Screen
+        name="AddAddress"
+        component={AddAddress}
+      />
+    </BottomTabsProfileNested.Navigator>
   );
 }
