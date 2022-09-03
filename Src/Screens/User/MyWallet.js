@@ -5,7 +5,7 @@ import HeaderComponent from '../../Components/HeaderComponent';
 import {hp, wp} from '../../Utils/Responsive';
 import ToggleSwitch from 'toggle-switch-react-native';
 
-export default function MyWallet() {
+export default function MyWallet(props) {
     const [toggle, setToggle] = useState(false)
   return (
     <View style={styles.container}>
