@@ -4,7 +4,6 @@ import {colors} from '../Utils/Colors';
 import {hp, wp} from '../Utils/Responsive';
 export default function TabBarButton(props) {
   const active = props.accessibilityState.selected;
-  console.log(props);
   if (active) {
     return (
       <View style={styles.container}>
