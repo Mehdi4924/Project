@@ -6,7 +6,7 @@ import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
 const data2 = [
   {
-    image: require('../../Assets/dummyicon.png'),
+    image: require('../../Assets/acservices.png'),
     name: 'AC Leakage',
     provider: 'Service Provider',
     rating: 4.2,
@@ -14,7 +14,7 @@ const data2 = [
     discountAmoount: 1500,
   },
   {
-    image: require('../../Assets/dummyicon.png'),
+    image: require('../../Assets/acservices.png'),
     name: 'AC Repair',
     provider: 'Service Provider',
     rating: 3.2,
@@ -22,7 +22,7 @@ const data2 = [
     discountAmoount: 1500,
   },
   {
-    image: require('../../Assets/dummyicon.png'),
+    image: require('../../Assets/acservices.png'),
     name: 'AC Instsallation',
     provider: 'Service Provider',
     rating: 2.2,

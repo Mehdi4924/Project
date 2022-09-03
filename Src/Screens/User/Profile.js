@@ -239,9 +239,9 @@ const styles = StyleSheet.create({
   },
   mainView: {
     width: wp(90),
-    borderColor: colors.white,
+    backgroundColor: colors.white,
     elevation: 5,
-    borderRadius: 5,
+    borderRadius: 10,
     alignItems: 'center',
     paddingVertical: hp(1),
     marginVertical: hp(2),
@@ -253,6 +253,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: colors.grey,
     paddingVertical: hp(1),
+    borderRadius: 10,
   },
   iconStyles: {
     width: wp(60),

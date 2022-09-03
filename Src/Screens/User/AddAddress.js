@@ -27,14 +27,8 @@ export default function AddAddress(props) {
             name="ADDRESS"
             search={true}
           />
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: wp(90),
-              marginVertical: hp(2),
-            }}>
-            <Text>Default Address</Text>
+          <View style={styles.addressView}>
+            <Text style={styles.defaultAddress}>Default Address</Text>
             <TouchableOpacity>
               <Icon
                 name="plus"
@@ -44,19 +38,8 @@ export default function AddAddress(props) {
               />
             </TouchableOpacity>
           </View>
-          <View
-            style={{
-              backgroundColor: colors.primaryLight,
-              paddingVertical: hp(2),
-              paddingHorizontal: wp(1),
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                width: wp(90),
-                alignItems: 'center',
-              }}>
+          <View style={styles.addressSubView}>
+            <View style={styles.headingText}>
               <Text style={{color: colors.grey, fontFamily: 'Poppins-Bold'}}>
                 Address
               </Text>
@@ -71,15 +54,15 @@ export default function AddAddress(props) {
               Islmabad, Islamabad Capital Territory, Pakistan
             </Text>
           </View>
-          <Text style={{color: colors.primary, fontFamily: 'Poppins-Bold'}}>
-            Select Default Location
-          </Text>
-          <Text style={{color: colors.black, fontFamily: 'Poppins-Bold'}}>
-            Sargodha
-          </Text>
-          <Text style={{color: colors.black, fontFamily: 'Poppins-Regular'}}>
-            Al Rehman, Trade Center Punjab, Sargodha
-          </Text>
+          <Text style={styles.defaultLocation}>Select Default Location</Text>
+          <View style={styles.bottomText}>
+            <Text style={{color: colors.black, fontFamily: 'Poppins-Bold'}}>
+              Sargodha
+            </Text>
+            <Text style={{color: colors.black, fontFamily: 'Poppins-Regular'}}>
+              Al Rehman, Trade Center Punjab, Sargodha
+            </Text>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -91,5 +74,43 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.white,
     flex: 1,
+  },
+  addressView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: wp(90),
+    marginVertical: hp(2),
+  },
+  addressSubView: {
+    backgroundColor: colors.primaryLight,
+    paddingVertical: hp(2),
+    paddingHorizontal: wp(1),
+    borderRadius: 10,
+    paddingHorizontal: wp(5),
+    width: wp(90),
+    elevation: 5,
+  },
+  headingText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: wp(80),
+    alignItems: 'center',
+  },
+  defaultLocation: {
+    color: colors.primary,
+    fontFamily: 'Poppins-Bold',
+    alignSelf: 'center',
+    width: wp(90),
+    marginVertical: hp(2),
+  },
+  defaultAddress: {
+    color: colors.primary,
+    fontFamily: 'Poppins-Bold',
+    alignSelf: 'center',
+  },
+  bottomText: {
+    paddingHorizontal: wp(1),
+    borderRadius: 10,
+    width: wp(90),
   },
 });

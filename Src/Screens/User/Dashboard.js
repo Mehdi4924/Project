@@ -15,27 +15,49 @@ import OffersFlatlist from '../../Components/OffersFlatlist';
 import RecommendedFlatList from '../../Components/RecommendedFlatList';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
-const dat = [
+const discountList = [
   {
-    image: require('../../Assets/dummyicon.png'),
+    image: require('../../Assets/azadi.png'),
     name: 'Azadi Offfer',
   },
   {
-    image: require('../../Assets/dummyicon.png'),
+    image: require('../../Assets/voucher.png'),
     name: 'Gift Voucher',
   },
   {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Summer Collections',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
+    image: require('../../Assets/sale.png'),
     name: 'Sale',
   },
-];
-const data2 = [
   {
-    image: require('../../Assets/dummyicon.png'),
+    image: require('../../Assets/azadi.png'),
+    name: 'Summer Collections',
+  },
+];
+const servicesList = [
+  {
+    image: require('../../Assets/ac.png'),
+    name: 'AC Service',
+  },
+  {
+    image: require('../../Assets/clothing.png'),
+    name: 'Cleaning',
+  },
+  {
+    image: require('../../Assets/Plumber.png'),
+    name: 'Plumber',
+  },
+  {
+    image: require('../../Assets/electric.png'),
+    name: 'Electrician',
+  },
+  {
+    image: require('../../Assets/applicances.png'),
+    name: 'Home Applicances',
+  },
+];
+const RecommendedList = [
+  {
+    image: require('../../Assets/acservices.png'),
     name: 'AC Leakage',
     provider: 'Service Provider',
     rating: 4.2,
@@ -43,7 +65,7 @@ const data2 = [
     discountAmoount: 1500,
   },
   {
-    image: require('../../Assets/dummyicon.png'),
+    image: require('../../Assets/acservices.png'),
     name: 'AC Repair',
     provider: 'Service Provider',
     rating: 3.2,
@@ -51,7 +73,7 @@ const data2 = [
     discountAmoount: 1500,
   },
   {
-    image: require('../../Assets/dummyicon.png'),
+    image: require('../../Assets/acservices.png'),
     name: 'AC Instsallation',
     provider: 'Service Provider',
     rating: 2.2,
@@ -59,6 +81,7 @@ const data2 = [
     discountAmoount: 1500,
   },
 ];
+
 export default function Dashboard(props) {
   const [search, setSearch] = useState('');
   return (
@@ -111,7 +134,7 @@ export default function Dashboard(props) {
           </View>
           <View style={{height: hp(15)}}>
             <OffersFlatlist
-              data={dat}
+              data={discountList}
               contentContainerStyle={{
                 paddingHorizontal: wp(5),
                 marginVertical: hp(1),
@@ -134,7 +157,7 @@ export default function Dashboard(props) {
           </View>
           <View style={{height: hp(15)}}>
             <OffersFlatlist
-              data={dat}
+              data={servicesList}
               contentContainerStyle={{
                 paddingHorizontal: wp(5),
                 marginVertical: hp(1),
@@ -145,7 +168,7 @@ export default function Dashboard(props) {
               }
               parentView={styles.parentView1}
               ImageView={styles.ImageView1}
-              imageStyles={{width: 50, height: 50}}
+              imageStyles={{width: 45, height: 45}}
               textView={styles.textView1}
             />
           </View>
@@ -157,7 +180,7 @@ export default function Dashboard(props) {
             </TouchableOpacity>
           </View>
           <RecommendedFlatList
-            data={data2}
+            data={RecommendedList}
             itemContainer={styles.itemContainer}
             listImageView={styles.listImageView}
             serviceNameText={styles.serviceNameText}
