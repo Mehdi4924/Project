@@ -46,7 +46,7 @@ function VendorScreens() {
         options={{
           tabBarButton: props => (
             <TabBarButton
-              imgSrc={require('../Assets/user.png')}
+              imgSrc={require('../Assets/home.png')}
               {...props}
               name="Home"
               onPress={() => navigation.navigate('BottomTabsNested')}
@@ -60,7 +60,7 @@ function VendorScreens() {
         options={{
           tabBarButton: props => (
             <TabBarButton
-              imgSrc={require('../Assets/user.png')}
+              imgSrc={require('../Assets/orders.png')}
               {...props}
               name="Orders"
               onPress={() => navigation.navigate('BottomTabsOrders')}
@@ -74,7 +74,7 @@ function VendorScreens() {
         options={{
           tabBarButton: props => (
             <TabBarButton
-              imgSrc={require('../Assets/user.png')}
+              imgSrc={require('../Assets/profile.png')}
               {...props}
               name="Profile"
               onPress={() => navigation.navigate('BottomTabsProfile')}

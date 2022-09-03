@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   textStyles: {
     color: colors.white,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Regular',
     width: wp(60),
     textAlign: 'center',
   },

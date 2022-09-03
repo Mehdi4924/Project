@@ -23,14 +23,14 @@ export default function SelectRole(props) {
             name={'Continue as User'}
             textStyles={styles.textStyles}
             buttonStyles={styles.buttonStyles}
-            onPress={() => props.navigation.navigate('AuthSelect')}
+            onPress={() => props.navigation.navigate('Auth')}
           />
           <Button
             isLoading={false}
             name={'Continue as Vendor'}
             textStyles={styles.textStyles}
             buttonStyles={styles.buttonStyles}
-            onPress={() => props.navigation.navigate('AuthSelect')}
+            onPress={() => props.navigation.navigate('VendorAuth')}
           />
         </View>
       </View>

@@ -20,6 +20,7 @@ import ProfileDetails from '../Screens/User/ProfileDetails';
 import AddAddress from '../Screens/User/AddAddress';
 import Rewards from '../Screens/User/Rewards';
 import MyWallet from '../Screens/User/MyWallet';
+import {wp} from '../Utils/Responsive';
 
 const BottomTabs = createBottomTabNavigator();
 const UserNavigator = createStackNavigator();
@@ -42,14 +43,17 @@ function UserNavigatorScreens() {
   const navigation = useNavigation();
   return (
     <BottomTabs.Navigator
-      screenOptions={{headerShown: false, tabBarLabelPosition: 'beside-icon'}}>
+      screenOptions={{
+        headerShown: false,
+        tabBarLabelPosition: 'beside-icon',
+      }}>
       <BottomTabs.Screen
         name="BottomTabsNested"
         component={BottomTabsNested}
         options={{
           tabBarButton: props => (
             <TabBarButton
-              imgSrc={require('../Assets/user.png')}
+              imgSrc={require('../Assets/home.png')}
               {...props}
               name="Home"
               onPress={() => navigation.navigate('BottomTabsNested')}
@@ -63,7 +67,7 @@ function UserNavigatorScreens() {
         options={{
           tabBarButton: props => (
             <TabBarButton
-              imgSrc={require('../Assets/user.png')}
+              imgSrc={require('../Assets/orders.png')}
               {...props}
               name="Orders"
               onPress={() => navigation.navigate('BottomTabsOrders')}
@@ -77,7 +81,7 @@ function UserNavigatorScreens() {
         options={{
           tabBarButton: props => (
             <TabBarButton
-              imgSrc={require('../Assets/user.png')}
+              imgSrc={require('../Assets/profile.png')}
               {...props}
               name="Profile"
               onPress={() => navigation.navigate('BottomTabsProfile')}
@@ -163,14 +167,8 @@ function BottomTabsProfile() {
         name="AddAddress"
         component={AddAddress}
       />
-      <BottomTabsProfileNested.Screen
-        name="Rewards"
-        component={Rewards}
-      />
-      <BottomTabsProfileNested.Screen
-        name="MyWallet"
-        component={MyWallet}
-      />
+      <BottomTabsProfileNested.Screen name="Rewards" component={Rewards} />
+      <BottomTabsProfileNested.Screen name="MyWallet" component={MyWallet} />
     </BottomTabsProfileNested.Navigator>
   );
 }
