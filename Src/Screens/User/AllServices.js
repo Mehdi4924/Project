@@ -16,21 +16,25 @@ const data = [
     image: require('../../Assets/ac.png'),
     rating: 2.2,
     orders: 500,
+    name: 'AC Service',
   },
   {
-    image: require('../../Assets/ac.png'),
+    image: require('../../Assets/geyser.png'),
     rating: 3.4,
     orders: 13214321,
+    name: 'Geyser',
   },
   {
-    image: require('../../Assets/ac.png'),
+    image: require('../../Assets/motor.png'),
     rating: 5,
     orders: 5,
+    name: 'Water Motor',
   },
   {
-    image: require('../../Assets/ac.png'),
+    image: require('../../Assets/electrician.png'),
     rating: 4.5,
     orders: 23421,
+    name: 'Electrician',
   },
 ];
 export default function AllServices(props) {
@@ -53,27 +57,32 @@ export default function AllServices(props) {
             numColumns={3}
             renderItem={({item, index}) => {
               return (
-                <TouchableOpacity style={styles.listItem} onPress={() => null}>
-                  <Image
-                    source={require('../../Assets/ac.png')}
-                    style={{widht: 40, height: 40}}
-                    resizeMode="contain"
-                  />
-                  <View style={styles.listBottomView}>
-                    <View style={styles.ratingView}>
-                      <Text style={styles.itemText}>Ratings</Text>
-                      <Text style={styles.itemText}>
-                        {item.rating}
-                        <Text style={{color: '#FFC057'}}>{'\u2605'}</Text>
-                      </Text>
+                <View style={{alignItems: 'center'}}>
+                  <TouchableOpacity
+                    style={styles.listItem}
+                    onPress={() => null}>
+                    <Image
+                      source={item.image}
+                      style={{widht: 20, height: 50, alignSelf: 'center'}}
+                      resizeMode="contain"
+                    />
+                    <View style={styles.listBottomView}>
+                      <View style={styles.ratingView}>
+                        <Text style={styles.itemText}>Ratings</Text>
+                        <Text style={styles.itemText}>
+                          {item.rating}
+                          <Text style={{color: '#FFC057'}}>{'\u2605'}</Text>
+                        </Text>
+                      </View>
+                      <View style={styles.seperator} />
+                      <View style={styles.ratingView}>
+                        <Text style={styles.itemText}>Orders</Text>
+                        <Text style={styles.itemText}>{item.orders}</Text>
+                      </View>
                     </View>
-                    <View style={styles.seperator} />
-                    <View style={styles.ratingView}>
-                      <Text style={styles.itemText}>Orders</Text>
-                      <Text style={styles.itemText}>{item.orders}</Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
+                  </TouchableOpacity>
+                  <Text style={styles.bottomText}>{item.name}</Text>
+                </View>
               );
             }}
           />
@@ -132,5 +141,11 @@ const styles = StyleSheet.create({
   seperator: {
     borderRightWidth: 1,
     borderRightColor: colors.grey,
+  },
+  bottomText: {
+    marginVertical: hp(1),
+    fontFamily: 'Poppins-Regular',
+    fontSize: hp(2),
+    color: colors.primary,
   },
 });
