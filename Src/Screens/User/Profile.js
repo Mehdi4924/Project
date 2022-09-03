@@ -98,7 +98,9 @@ export default function Profile(props) {
                 size={hp(2)}
               />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.subView}>
+            <TouchableOpacity style={styles.subView}
+            onPress={() => props.navigation.navigate('Rewards')}
+            >
               <View style={styles.iconStyles}>
                 <Icon
                   name="medal"
@@ -115,7 +117,9 @@ export default function Profile(props) {
                 size={hp(2)}
               />
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.subView, {borderBottomWidth: 0}]}>
+            <TouchableOpacity style={[styles.subView, {borderBottomWidth: 0}]}
+            onPress={() => props.navigation.navigate('MyWallet')}
+                        >
               <View style={styles.iconStyles}>
                 <Icon
                   name="wallet"
