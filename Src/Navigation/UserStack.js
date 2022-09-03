@@ -18,6 +18,8 @@ import CashOnDelivery from '../Screens/User/CashOnDelivery';
 import Profile from '../Screens/User/Profile';
 import ProfileDetails from '../Screens/User/ProfileDetails';
 import AddAddress from '../Screens/User/AddAddress';
+import Rewards from '../Screens/User/Rewards';
+import MyWallet from '../Screens/User/MyWallet';
 
 const BottomTabs = createBottomTabNavigator();
 const UserNavigator = createStackNavigator();
@@ -160,6 +162,14 @@ function BottomTabsProfile() {
       <BottomTabsProfileNested.Screen
         name="AddAddress"
         component={AddAddress}
+      />
+      <BottomTabsProfileNested.Screen
+        name="Rewards"
+        component={Rewards}
+      />
+      <BottomTabsProfileNested.Screen
+        name="MyWallet"
+        component={MyWallet}
       />
     </BottomTabsProfileNested.Navigator>
   );
