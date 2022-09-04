@@ -6,6 +6,7 @@ import TabBarButton from './TabBarButton';
 import Orders from '../Screens/Vendor/Orders';
 import Profile from '../Screens/Vendor/Profile';
 import VendorDashboard from '../Screens/Vendor/VendorDashboard';
+import Wallet2 from '../Screens/User/Wallet2';
 
 const BottomTabs = createBottomTabNavigator();
 const Vendor = createStackNavigator();
@@ -78,6 +79,10 @@ function BottomTabsNested() {
       <BottomTabsNestedScreens.Screen
         name="VendorDashBoard"
         component={VendorDashboard}
+      />
+      <BottomTabsNestedScreens.Screen
+        name="Wallet2"
+        component={Wallet2}
       />
     </BottomTabsNestedScreens.Navigator>
   );
