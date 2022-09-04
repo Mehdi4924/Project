@@ -4,12 +4,9 @@ import {
   View,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   ScrollView,
-  FlatList,
 } from 'react-native';
-import Button from '../../Components/Button';
 import CustomTextInput from '../../Components/CustomTextInput';
 import OffersFlatlist from '../../Components/OffersFlatlist';
 import RecommendedFlatList from '../../Components/RecommendedFlatList';
