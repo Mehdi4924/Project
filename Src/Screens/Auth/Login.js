@@ -12,13 +12,86 @@ import Button from '../../Components/Button';
 import CustomTextInput from '../../Components/CustomTextInput';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
+import { GoogleSignin, statusCodes, } from '@react-native-google-signin/google-signin';
+import { LoginManager, GraphRequest, GraphRequestManager } from "react-native-fbsdk";
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   useEffect(() => {
+    GoogleSignin.configure()
     //this runs first
-  });
+  },[]);
+
+  const fbLogin = (resCallback) => {
+    // LoginManager.logOut()
+    LoginManager.logInWithPermissions(['email', 'public_profile']).then(
+      result =>{
+        console.log('Result ==>>>>>>', result);
+        // if(result.declinedPermissions && result.declinedPermissions.includes('email')){
+        //   resCallback({message: 'email required'})
+        // }
+        // if(result.isCancelled){
+        //   console.log('error');
+        // }
+        // else{
+        //   const infoRequest = new GraphRequest(
+        //     '/me?fields=email,name,picture,friend',
+        //     null,
+        //     resCallback
+        //   );
+        //   new GraphRequestManager().addRequest(infoRequest).start()
+        // }
+        
+      },
+      function(error){
+        console.log('Login fail with error:'+ error);
+      }
+    )
+  }
+
+  const onFbLogin = async() =>{
+    try{
+      await fbLogin(_responseInfoCalback)
+    }
+    catch(error){
+      console.log('error raised', error);
+    }
+  }
+
+  const _responseInfoCalback = async(error, result) =>{
+    if(error){
+      console.log('error top', error);
+      return;
+    }
+    else{
+      const userData = result
+      console.log('fb data', userData);
+    }
+
+  }
+
+  const googleLogin = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log('user Info', userInfo);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+       console.log(error);
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+       console.log(error);
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+       console.log(error);
+        // play services not available or outdated
+      } else {
+       console.log(error);
+        // some other error happened
+      }
+    }
+  };
+
 
   return (
     <View style={{flex: 1}}>
@@ -54,6 +127,15 @@ export default function Login(props) {
               buttonStyles={[styles.buttonStyles, {marginVertical: hp(2)}]}
               onPress={() => props.navigation.navigate('UserStack')}
             />
+            <Button
+              isLoading={false}
+              name={'Logout'}
+              textStyles={styles.textStyles}
+              buttonStyles={[styles.buttonStyles, {marginVertical: hp(2)}]}
+              onPress={() => {
+                GoogleSignin.signOut().then(()=>console.log('Logout'))
+              }}
+            />
             <TouchableOpacity style={{width: wp(80), alignItems: 'flex-end'}}>
               <Text
                 style={{color: colors.primary, fontFamily: 'Poppins-Regular'}}>
@@ -70,7 +152,7 @@ export default function Login(props) {
                 styles.buttonStyles,
                 {backgroundColor: colors.white, marginVertical: hp(1)},
               ]}
-              onPress={() => null}
+              onPress={googleLogin}
               icon={true}
               imageSource={require('../../Assets/google.png')}
             />
@@ -82,7 +164,7 @@ export default function Login(props) {
                 styles.buttonStyles,
                 {backgroundColor: '#1976D2', marginVertical: hp(1)},
               ]}
-              onPress={() => null}
+              onPress={onFbLogin}
               icon={true}
               imageSource={require('../../Assets/fb.png')}
             />

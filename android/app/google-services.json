@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "571420276272",
+    "project_id": "mihomes-5d4ff",
+    "storage_bucket": "mihomes-5d4ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571420276272:android:3c5ea383b6cc0a50281ff5",
+        "android_client_info": {
+          "package_name": "com.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571420276272-ja6q7gf48oh5q84l2gvviubb6l8tbdmj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project",
+            "certificate_hash": "1e776307df35ea67dd7275ab14e7b632e0235a6f"
+          }
+        },
+        {
+          "client_id": "571420276272-let64jjcmb8rmpoupnfeb3ri6fjv3rhv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIBVvkUr7901X3SDMgjWofCC_sKpU2YC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571420276272-let64jjcmb8rmpoupnfeb3ri6fjv3rhv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
