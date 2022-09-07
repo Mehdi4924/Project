@@ -12,13 +12,66 @@ import Button from '../../Components/Button';
 import CustomTextInput from '../../Components/CustomTextInput';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
+import { GoogleSignin, statusCodes, } from '@react-native-google-signin/google-signin';
+import { LoginManager, Profile, AccessToken } from "react-native-fbsdk-next";
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [pic, setPic] = useState('');
   useEffect(() => {
+    GoogleSignin.configure()
     //this runs first
-  });
+  },[]);
+ 
+  const fbLogin = () => {
+    LoginManager.logOut();
+    LoginManager.logInWithPermissions(["public_profile","email"]).then(
+      function(result) {
+        if (result.isCancelled) {
+          console.log("Login cancelled");
+        } else {
+           AccessToken.getCurrentAccessToken().then((token) => {
+            fetch(`https://graph.facebook.com/me?fields=email,name,friends,picture.type(large)&access_token=${token.accessToken}`)
+            .then((res) => res.json())
+            .then((json) => {
+              console.log(json)
+            })
+            .catch((error) => {
+console.log(error)
+            })
+           })
+          }
+          },
+      function(error) {
+        console.log("Login fail with error: " + error);
+      }
+    );
+  }
+
+ 
+
+  const googleLogin = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log('user Info', userInfo);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+       console.log(error);
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+       console.log(error);
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+       console.log(error);
+        // play services not available or outdated
+      } else {
+       console.log(error);
+        // some other error happened
+      }
+    }
+  };
+
 
   return (
     <View style={{flex: 1}}>
@@ -54,6 +107,15 @@ export default function Login(props) {
               buttonStyles={[styles.buttonStyles, {marginVertical: hp(2)}]}
               onPress={() => props.navigation.replace('UserStack')}
             />
+            <Button
+              isLoading={false}
+              name={'Logout'}
+              textStyles={styles.textStyles}
+              buttonStyles={[styles.buttonStyles, {marginVertical: hp(2)}]}
+              onPress={() => {
+                GoogleSignin.signOut().then(()=>console.log('Logout'))
+              }}
+            />
             <TouchableOpacity style={{width: wp(80), alignItems: 'flex-end'}}>
               <Text
                 style={{color: colors.primary, fontFamily: 'Poppins-Regular'}}>
@@ -70,7 +132,7 @@ export default function Login(props) {
                 styles.buttonStyles,
                 {backgroundColor: colors.white, marginVertical: hp(1)},
               ]}
-              onPress={() => null}
+              onPress={googleLogin}
               icon={true}
               imageSource={require('../../Assets/google.png')}
             />
@@ -82,7 +144,7 @@ export default function Login(props) {
                 styles.buttonStyles,
                 {backgroundColor: '#1976D2', marginVertical: hp(1)},
               ]}
-              onPress={() => null}
+              onPress={fbLogin}
               icon={true}
               imageSource={require('../../Assets/fb.png')}
             />
@@ -111,7 +173,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: hp(2),
   },
-  topImage: {widht: wp(20), height: hp(20), marginTop: hp(8)},
+  topImage: {height: hp(20), marginTop: hp(8)},
   loginText: {
     color: colors.primary,
     fontFamily: 'Poppins-Bold',

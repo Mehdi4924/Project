@@ -82,6 +82,7 @@ function BottomTabsNested() {
         name="VendorDashBoard"
         component={VendorDashboard}
       />
+     
       <BottomTabsNestedScreens.Screen name="Wallet" component={Wallet} />
       <BottomTabsNestedScreens.Screen name="Bonus" component={Bonus} />
     </BottomTabsNestedScreens.Navigator>
