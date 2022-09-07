@@ -8,7 +8,7 @@ export default function Splash(props) {
 
   function timeoutFunction() {
     setTimeout(() => {
-      props.navigation.navigate('OnBoarding');
+      props.navigation.replace('SelectRole');
     }, 3000);
   }
   return (

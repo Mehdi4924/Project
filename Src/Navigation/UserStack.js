@@ -56,7 +56,11 @@ function UserNavigatorScreens() {
               imgSrc={require('../Assets/home.png')}
               {...props}
               name="Home"
-              onPress={() => navigation.navigate('BottomTabsNested')}
+              onPress={() =>
+                navigation.canGoBack()
+                  ? navigation.goBack()
+                  : navigation.navigate('BottomTabsNested')
+              }
             />
           ),
         }}
@@ -70,7 +74,11 @@ function UserNavigatorScreens() {
               imgSrc={require('../Assets/orders.png')}
               {...props}
               name="Orders"
-              onPress={() => navigation.navigate('BottomTabsOrders')}
+              onPress={() =>
+                navigation.canGoBack()
+                  ? navigation.goBack()
+                  : navigation.navigate('BottomTabsOrders',{screen:"Orders"})
+              }
             />
           ),
         }}

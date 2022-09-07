@@ -5,41 +5,34 @@ import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
 import RecommendedFlatList from '../../Components/RecommendedFlatList';
 import HeaderComponent from '../../Components/HeaderComponent';
+
 const data2 = [
   {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
+    image: require('../../Assets/acservices.png'),
+    name: 'AC Leakage',
+    provider: 'Service Provider',
+    rating: 4.2,
+    previousAmount: 2000,
+    discountAmoount: 1500,
   },
   {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Gift Voucher',
+    image: require('../../Assets/acservices.png'),
+    name: 'AC Repair',
+    provider: 'Service Provider',
+    rating: 3.2,
+    previousAmount: 2000,
+    discountAmoount: 1500,
   },
   {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Sale',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
-  },
-  {
-    image: require('../../Assets/dummyicon.png'),
-    name: 'Azadi Offfer',
+    image: require('../../Assets/acservices.png'),
+    name: 'AC Instsallation',
+    provider: 'Service Provider',
+    rating: 2.2,
+    previousAmount: 2000,
+    discountAmoount: 1500,
   },
 ];
-export default function ServiceDetails() {
+export default function ServiceDetails(props) {
   const [search, setSearch] = useState('');
 
   return (
@@ -49,7 +42,7 @@ export default function ServiceDetails() {
           <HeaderComponent
             icon={require('../../Assets/arrowBack.png')}
             onPress={() => props.navigation.goBack()}
-            name="All Services"
+            name="AC SERVICE"
             value={search}
             onSearch={t => setSearch(t)}
           />
@@ -68,7 +61,11 @@ export default function ServiceDetails() {
               bookNowText={styles.bookNowText}
               providerText={styles.providerText}
               ratingView={styles.ratingView}
-              onBookNowPress={() => props.navigation.navigate('BookService')}
+              onBookNowPress={() =>
+                props.navigation.navigate('BottomTabsOrders', {
+                  screen: 'BookService',
+                })
+              }
             />
           </View>
         </View>
@@ -180,7 +177,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: wp(55),
-    
   },
   priceView: {
     flexDirection: 'row',

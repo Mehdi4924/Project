@@ -8,6 +8,7 @@ import Profile from '../Screens/Vendor/Profile';
 import VendorDashboard from '../Screens/Vendor/VendorDashboard';
 import Wallet from '../Screens/Vendor/Wallet';
 import Bonus from '../Screens/Vendor/Bonus';
+import OrderDetails from '../Screens/Vendor/OrderDetails';
 
 const BottomTabs = createBottomTabNavigator();
 const Vendor = createStackNavigator();
@@ -91,6 +92,7 @@ function BottomTabsOrders() {
   return (
     <BottomTabsOrdersNested.Navigator screenOptions={{headerShown: false}}>
       <BottomTabsOrdersNested.Screen name="Orders" component={Orders} />
+      <BottomTabsOrdersNested.Screen name="OrderDetails" component={OrderDetails} />
     </BottomTabsOrdersNested.Navigator>
   );
 }

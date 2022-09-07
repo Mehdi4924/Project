@@ -32,8 +32,9 @@ export default function OrderDetails(props) {
             <Text style={styles.headingText}>AC Leakage</Text>
             <TouchableOpacity>
               <Image
-                source={require('../../Assets/dummyicon.png')}
+                source={require('../../Assets/dots.png')}
                 style={{widt: 20, height: 20}}
+                resizeMode="contain"
               />
             </TouchableOpacity>
           </View>
@@ -61,7 +62,6 @@ export default function OrderDetails(props) {
           buttonStyles={styles.buttonStyles}
           onPress={() => props.navigation.navigate('TrackOrder')}
         />
-        
       </ScrollView>
     </View>
   );
@@ -144,5 +144,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: hp(1.8),
   },
-  
 });

@@ -75,7 +75,7 @@ export default function TrackOrder(props) {
               />
               <Text style={styles.cardTextStyles}>Naseer Noor</Text>
               <Image
-                source={require('../../Assets/dummyicon.png')}
+                source={require('../../Assets/sheild.png')}
                 style={{width: 30, height: 30}}
                 resizeMode="contain"
               />
@@ -115,16 +115,16 @@ export default function TrackOrder(props) {
             <View style={[styles.cardProfileView, {width: wp(70)}]}>
               <View style={styles.iconViewStyles}>
                 <Image
-                  source={require('../../Assets/dummyicon.png')}
-                  style={{width: 30, height: 30}}
+                  source={require('../../Assets/messagegreen.png')}
+                  style={{width: 20, height: 20, marginRight: 5}}
                   resizeMode="contain"
                 />
                 <Text style={styles.iconTextStyles}>Message</Text>
               </View>
               <View style={[styles.iconViewStyles, {width: wp(30)}]}>
                 <Image
-                  source={require('../../Assets/dummyicon.png')}
-                  style={{width: 30, height: 30}}
+                  source={require('../../Assets/phonegreen.png')}
+                  style={{width: 20, height: 20, marginRight: 5}}
                   resizeMode="contain"
                 />
                 <Text style={styles.iconTextStyles}>Call To Vendor</Text>

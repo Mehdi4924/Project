@@ -60,7 +60,7 @@ export default function AllServices(props) {
                 <View style={{alignItems: 'center'}}>
                   <TouchableOpacity
                     style={styles.listItem}
-                    onPress={() => null}>
+                    onPress={() => props.navigation.navigate("ServiceDetails")}>
                     <Image
                       source={item.image}
                       style={{widht: 20, height: 50, alignSelf: 'center'}}

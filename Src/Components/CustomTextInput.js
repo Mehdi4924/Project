@@ -15,8 +15,8 @@ export default function CustomTextInput(props) {
       />
       {props.icon ? (
         <Image
-          source={require('../Assets/roleimage.png')}
-          style={{width: 30, height: 30}}
+          source={require('../Assets/search.png')}
+          style={{width: 20, height: 20}}
           resizeMode="contain"
         />
       ) : null}

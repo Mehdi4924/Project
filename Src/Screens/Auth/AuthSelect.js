@@ -31,7 +31,7 @@ export default function AuthSelect(props) {
             name={'Signup'}
             textStyles={styles.textStyles}
             buttonStyles={styles.buttonStyles}
-            onPress={() => props.navigation.navigate('AuthSelect')}
+            onPress={() => props.navigation.navigate('Signup')}
           />
         </View>
       </View>

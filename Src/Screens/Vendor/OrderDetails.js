@@ -1,49 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
-  FlatList,
-  Image,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  Image,
+  ScrollView,
 } from 'react-native';
 import Button from '../../Components/Button';
-import {useNavigation} from '@react-navigation/native';
 import HeaderComponent from '../../Components/HeaderComponent';
+import {useNavigation} from '@react-navigation/native';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
-const flatData = [
-  {
-    icon: require('../../Assets/ac.png'),
-    name: 'AC Leakage',
-    scheduled: new Date(),
-    status: 'Recieved',
-    OrderNumber: 'Hm-1234-142143',
-  },
-  {
-    icon: require('../../Assets/ac.png'),
-    name: 'AC Installation',
-    scheduled: new Date(),
-    status: 'Recieved',
-    OrderNumber: 'Hm-1234-1426543',
-  },
-  {
-    icon: require('../../Assets/ac.png'),
-    name: 'AC Leakage',
-    scheduled: new Date(),
-    status: 'Previous',
-    OrderNumber: 'Hm-1234-1426543',
-  },
-  {
-    icon: require('../../Assets/ac.png'),
-    name: 'AC Installation',
-    scheduled: new Date(),
-    status: 'Scheduled',
-    OrderNumber: 'Hm-1234-1426543',
-  },
-];
-export default function Orders(props) {
+import StepIndicator from 'react-native-step-indicator';
+
+export default function OrderDetails(props) {
   const [topTab, setTopTab] = useState('Active');
   const {getParent} = useNavigation();
   useEffect(() => {
@@ -57,6 +28,32 @@ export default function Orders(props) {
       });
     };
   }, []);
+  const arr = ['Arrived', 'Visit/Inspection', 'Work Started', 'Work Done'];
+  const renderStepIndicator = x => (
+    <Image
+      source={require('../../Assets/dot.png')}
+      style={{width: 100, height: 100}}
+    />
+  );
+
+  const thirdIndicatorStyles = {
+    stepIndicatorSize: 20,
+    currentStepIndicatorSize: 20,
+    separatorStrokeWidth: 3,
+    currentStepStrokeWidth: 0,
+    stepStrokeCurrentColor: colors.primary,
+    stepStrokeWidth: 0,
+    stepStrokeFinishedColor: colors.primary,
+    stepStrokeUnFinishedColor: colors.grey,
+    separatorFinishedColor: colors.primary,
+    separatorUnFinishedColor: colors.grey,
+    stepIndicatorFinishedColor: colors.primary,
+    stepIndicatorUnFinishedColor: colors.grey,
+    stepIndicatorCurrentColor: colors.primary,
+    stepIndicatorLabelCurrentColor: 'transparent',
+    stepIndicatorLabelFinishedColor: 'transparent',
+    stepIndicatorLabelUnFinishedColor: 'transparent',
+  };
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -106,21 +103,39 @@ export default function Orders(props) {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={styles.orderDetails}>
-            <View style={styles.orderDetailsView}>
-              <View>
-                <Text style={styles.welcomeText}>Earnings</Text>
-                <Text style={styles.orderQty}>Chair Cleaning x 3</Text>
-              </View>
-              <View>
-                <Text style={styles.welcomeText}>Rs.750</Text>
-              </View>
+          <View style={styles.mainView}>
+            <View style={styles.subView1}>
+              <StepIndicator
+                currentPosition={0}
+                labels={arr}
+                stepCount={4}
+                renderStepIndicator={x => {
+                  return (
+                    <Image
+                      source={
+                        x.position == 0
+                          ? require('../../Assets/dot.png')
+                          : require('../../Assets/dotUncheck.png')
+                      }
+                      style={{width: 20, height: 20}}
+                      resizeMode="contain"
+                    />
+                  );
+                }}
+                customStyles={styles.indicatorStyles}
+              />
             </View>
-            <Text style={styles.locationText}>Customer Location</Text>
-            <Text style={styles.locationText}>
-              341 Street 73 G 11/2 G 11 Islamabad Capital Territory, G11,
-              Islamabad.
-            </Text>
+            <View style={styles.subView2}>
+              <Text style={styles.subViewText}>Rafia Umar</Text>
+              <Text style={styles.subViewText}>Rs.750</Text>
+            </View>
+            <View style={styles.mapSubView}>
+              <Text style={styles.locationText}>Customer Location</Text>
+              <Text style={styles.locationText}>
+                341 Street 73 G 11/2 G 11 Islamabad Capital Territory, G11,
+                Islamabad.
+              </Text>
+            </View>
             <View style={styles.doubleBtnViews}>
               <Button
                 isLoading={false}
@@ -142,29 +157,6 @@ export default function Orders(props) {
               />
             </View>
           </View>
-          <View style={styles.mapView}>
-            <View style={styles.mapSubView}>
-              <Text style={styles.locationText}>Customer Location</Text>
-              <Text style={styles.locationText}>
-                341 Street 73 G 11/2 G 11 Islamabad Capital Territory, G11,
-                Islamabad.
-              </Text>
-            </View>
-            <Image
-              source={require('../../Assets/map.png')}
-              style={{
-                height: hp(30),
-                width: wp(89),
-              }}
-            />
-            <Button
-              isLoading={false}
-              name={'Get Direction'}
-              textStyles={styles.textStyles2}
-              buttonStyles={styles.buttonStyles2}
-              onPress={() => null}
-            />
-          </View>
           <Text style={styles.detailsText}>Details</Text>
           <View style={styles.bottomView}>
             <Text style={styles.bottomText}>Order ID</Text>
@@ -180,13 +172,33 @@ export default function Orders(props) {
           </View>
         </View>
       </ScrollView>
-      <Button
-        isLoading={false}
-        name={'Arrived'}
-        textStyles={styles.textStyles3}
-        buttonStyles={styles.buttonStyles3}
-        onPress={() => props.navigation.navigate('OrderDetails')}
-      />
+      <View
+        style={{
+          width: wp(100),
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+        <Button
+          isLoading={false}
+          name={'Work Is Done'}
+          textStyles={styles.textStyles3}
+          buttonStyles={styles.buttonStyles3}
+          onPress={() => props.navigation.navigate('OrderDetails')}
+        />
+        <Button
+          isLoading={false}
+          name={'Need Repair'}
+          textStyles={styles.textStyles3}
+          buttonStyles={[
+            styles.buttonStyles3,
+            {
+              backgroundColor: '#1492E6',
+            },
+          ]}
+          onPress={() => props.navigation.navigate('OrderDetails')}
+        />
+      </View>
     </View>
   );
 }
@@ -208,41 +220,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: hp(9),
   },
-  doubleBtnViews: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
   topText: {
     fontSize: hp(2),
     color: colors.white,
     fontFamily: 'Poppins-Bold',
-  },
-  detailsText: {
-    color: colors.primary,
-    marginVertical: hp(1),
-    fontFamily: 'Poppins-Bold',
-    fontSize: hp(2),
-    width: wp(90),
-  },
-  bottomText: {
-    color: colors.black,
-    fontFamily: 'Poppins-Regular',
-    fontSize: hp(2),
-  },
-  bottomText2: {
-    color: colors.white,
-    fontFamily: 'Poppins-Regular',
-    fontSize: hp(2),
-    backgroundColor: colors.primary,
-    paddingVertical: 1,
-    paddingHorizontal: 5,
-    borderRadius: 10,
-  },
-  bottomView: {
-    width: wp(90),
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   selectedTab: {borderBottomWidth: 2, borderBottomColor: colors.white},
   tabsView: {
@@ -258,12 +239,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: wp(90),
   },
-  mapView: {
+  mainView: {
     width: wp(90),
-    alignSelf: 'center',
+    backgroundColor: colors.lightGray,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: colors.primary,
-    borderRadius: 20,
+    elevation: 5,
+    alignItems: 'center',
   },
   mapSubView: {
     width: wp(89),
@@ -274,24 +257,36 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     padding: 10,
   },
-  orderDetails: {
-    width: wp(90),
-    height: hp(32),
-    backgroundColor: '#E9E9E9',
-    borderRadius: 20,
+  subView1: {
+    borderBottomWidth: 1,
+    width: wp(80),
+    borderBottomColor: colors.grey,
     marginVertical: hp(2),
-    paddingHorizontal: wp(5),
-    paddingVertical: hp(2),
-    borderWidth: 1,
-    borderColor: colors.primary,
-    elevation: 5,
   },
-  orderDetailsView: {
+  indicatorStyles: {
+    labelFontFamily: 'Poppins-Regular',
+    labelSize: hp(1.5),
+    stepIndicatorSize: 20,
+    currentStepIndicatorSize: 20,
+  },
+  subView2: {
+    width: wp(80),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    borderBottomColor: colors.grey,
     borderBottomWidth: 1,
-    borderBottomColor: colors.black,
+    paddingVertical: hp(1),
+  },
+  subViewText: {
+    fontFamily: 'Poppins-Bold',
+    color: colors.primary,
+    fontSize: hp(2),
+  },
+  doubleBtnViews: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   locationText: {
     color: colors.black,
@@ -299,16 +294,31 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     fontSize: hp(2),
   },
-  welcomeText: {
+  detailsText: {
     color: colors.primary,
-    paddingTop: hp(1),
+    marginVertical: hp(1),
     fontFamily: 'Poppins-Bold',
     fontSize: hp(2),
+    width: wp(90),
   },
-  orderQty: {
-    color: colors.primary,
+  bottomText: {
+    color: colors.black,
     fontFamily: 'Poppins-Regular',
     fontSize: hp(2),
+  },
+  bottomView: {
+    width: wp(90),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  bottomText2: {
+    color: colors.white,
+    fontFamily: 'Poppins-Regular',
+    fontSize: hp(2),
+    backgroundColor: colors.primary,
+    paddingVertical: 1,
+    paddingHorizontal: 5,
+    borderRadius: 10,
   },
   textStyles: {
     color: colors.white,
@@ -352,31 +362,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: hp(1.5),
   },
-  buttonStyles2: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: colors.primary,
-    width: wp(90),
-    height: hp(6),
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-    elevation: 4,
-    borderBottomRightRadius: 18,
-    borderBottomLeftRadius: 18,
-  },
-  textStyles2: {
-    color: colors.white,
-    fontFamily: 'Poppins-Bold',
-    width: wp(25),
-    textAlign: 'center',
-    fontSize: hp(1.5),
-  },
   buttonStyles3: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     backgroundColor: colors.primary,
-    width: wp(100),
+    width: wp(49.5),
     height: hp(7),
     alignItems: 'center',
     justifyContent: 'center',
@@ -387,7 +377,7 @@ const styles = StyleSheet.create({
   textStyles3: {
     color: colors.white,
     fontFamily: 'Poppins-Bold',
-    width: wp(25),
+    width: wp(30),
     textAlign: 'center',
     fontSize: hp(2),
   },
