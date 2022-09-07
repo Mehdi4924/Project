@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project</string>
+    <string name="app_name">MI Home</string>
     <string name="facebook_app_id">769257744397863</string>
     <string name="fb_login_protocol_scheme">fb769257744397863</string>
     <string name="facebook_client_token">79eb3484893a5efaacbac589c52a9458</string>

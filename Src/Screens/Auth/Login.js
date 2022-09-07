@@ -107,15 +107,7 @@ console.log(error)
               buttonStyles={[styles.buttonStyles, {marginVertical: hp(2)}]}
               onPress={() => props.navigation.replace('UserStack')}
             />
-            <Button
-              isLoading={false}
-              name={'Logout'}
-              textStyles={styles.textStyles}
-              buttonStyles={[styles.buttonStyles, {marginVertical: hp(2)}]}
-              onPress={() => {
-                GoogleSignin.signOut().then(()=>console.log('Logout'))
-              }}
-            />
+            
             <TouchableOpacity style={{width: wp(80), alignItems: 'flex-end'}}>
               <Text
                 style={{color: colors.primary, fontFamily: 'Poppins-Regular'}}>
