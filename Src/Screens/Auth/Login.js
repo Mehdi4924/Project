@@ -13,63 +13,43 @@ import CustomTextInput from '../../Components/CustomTextInput';
 import {colors} from '../../Utils/Colors';
 import {hp, wp} from '../../Utils/Responsive';
 import { GoogleSignin, statusCodes, } from '@react-native-google-signin/google-signin';
-import { LoginManager, GraphRequest, GraphRequestManager } from "react-native-fbsdk";
+import { LoginManager, Profile, AccessToken } from "react-native-fbsdk-next";
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [pic, setPic] = useState('');
   useEffect(() => {
     GoogleSignin.configure()
     //this runs first
   },[]);
-
-  const fbLogin = (resCallback) => {
-    // LoginManager.logOut()
-    LoginManager.logInWithPermissions(['email', 'public_profile']).then(
-      result =>{
-        console.log('Result ==>>>>>>', result);
-        // if(result.declinedPermissions && result.declinedPermissions.includes('email')){
-        //   resCallback({message: 'email required'})
-        // }
-        // if(result.isCancelled){
-        //   console.log('error');
-        // }
-        // else{
-        //   const infoRequest = new GraphRequest(
-        //     '/me?fields=email,name,picture,friend',
-        //     null,
-        //     resCallback
-        //   );
-        //   new GraphRequestManager().addRequest(infoRequest).start()
-        // }
-        
-      },
-      function(error){
-        console.log('Login fail with error:'+ error);
+ 
+  const fbLogin = () => {
+    LoginManager.logOut();
+    LoginManager.logInWithPermissions(["public_profile","email"]).then(
+      function(result) {
+        if (result.isCancelled) {
+          console.log("Login cancelled");
+        } else {
+           AccessToken.getCurrentAccessToken().then((token) => {
+            fetch(`https://graph.facebook.com/me?fields=email,name,friends,picture.type(large)&access_token=${token.accessToken}`)
+            .then((res) => res.json())
+            .then((json) => {
+              console.log(json)
+            })
+            .catch((error) => {
+console.log(error)
+            })
+           })
+          }
+          },
+      function(error) {
+        console.log("Login fail with error: " + error);
       }
-    )
+    );
   }
 
-  const onFbLogin = async() =>{
-    try{
-      await fbLogin(_responseInfoCalback)
-    }
-    catch(error){
-      console.log('error raised', error);
-    }
-  }
-
-  const _responseInfoCalback = async(error, result) =>{
-    if(error){
-      console.log('error top', error);
-      return;
-    }
-    else{
-      const userData = result
-      console.log('fb data', userData);
-    }
-
-  }
+ 
 
   const googleLogin = async () => {
     try {
@@ -164,7 +144,7 @@ export default function Login(props) {
                 styles.buttonStyles,
                 {backgroundColor: '#1976D2', marginVertical: hp(1)},
               ]}
-              onPress={onFbLogin}
+              onPress={fbLogin}
               icon={true}
               imageSource={require('../../Assets/fb.png')}
             />
@@ -193,7 +173,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: hp(2),
   },
-  topImage: {widht: wp(20), height: hp(20), marginTop: hp(8)},
+  topImage: {height: hp(20), marginTop: hp(8)},
   loginText: {
     color: colors.primary,
     fontFamily: 'Poppins-Bold',
