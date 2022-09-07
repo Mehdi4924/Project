@@ -52,7 +52,7 @@ export default function Login(props) {
               name={'Login'}
               textStyles={styles.textStyles}
               buttonStyles={[styles.buttonStyles, {marginVertical: hp(2)}]}
-              onPress={() => props.navigation.navigate('VendorStack')}
+              onPress={() => props.navigation.replace('VendorStack')}
             />
             <TouchableOpacity style={{width: wp(80), alignItems: 'flex-end'}}>
               <Text

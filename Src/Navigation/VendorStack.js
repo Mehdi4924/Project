@@ -9,6 +9,8 @@ import VendorDashboard from '../Screens/Vendor/VendorDashboard';
 import Wallet from '../Screens/Vendor/Wallet';
 import Bonus from '../Screens/Vendor/Bonus';
 import OrderDetails from '../Screens/Vendor/OrderDetails';
+import Charges from '../Screens/Vendor/Charges';
+import Submit from '../Screens/Vendor/Submit';
 
 const BottomTabs = createBottomTabNavigator();
 const Vendor = createStackNavigator();
@@ -38,7 +40,13 @@ function VendorScreens() {
               imgSrc={require('../Assets/home.png')}
               {...props}
               name="Home"
-              onPress={() => navigation.navigate('BottomTabsNested')}
+              onPress={() =>
+                navigation.canGoBack()
+                  ? navigation.goBack()
+                  : navigation.navigate('BottomTabsNested', {
+                      screen: 'VendorDashBoard',
+                    })
+              }
             />
           ),
         }}
@@ -52,7 +60,13 @@ function VendorScreens() {
               imgSrc={require('../Assets/orders.png')}
               {...props}
               name="Orders"
-              onPress={() => navigation.navigate('BottomTabsOrders')}
+              onPress={() =>
+                navigation.canGoBack()
+                  ? navigation.goBack()
+                  : navigation.navigate('BottomTabsOrders', {
+                      screen: 'Orders',
+                    })
+              }
             />
           ),
         }}
@@ -66,7 +80,13 @@ function VendorScreens() {
               imgSrc={require('../Assets/profile.png')}
               {...props}
               name="Profile"
-              onPress={() => navigation.navigate('BottomTabsProfile')}
+              onPress={() =>
+                navigation.canGoBack()
+                  ? navigation.goBack()
+                  : navigation.navigate('BottomTabsProfile', {
+                      screen: 'Profile',
+                    })
+              }
             />
           ),
         }}
@@ -82,7 +102,7 @@ function BottomTabsNested() {
         name="VendorDashBoard"
         component={VendorDashboard}
       />
-     
+
       <BottomTabsNestedScreens.Screen name="Wallet" component={Wallet} />
       <BottomTabsNestedScreens.Screen name="Bonus" component={Bonus} />
     </BottomTabsNestedScreens.Navigator>
@@ -93,7 +113,18 @@ function BottomTabsOrders() {
   return (
     <BottomTabsOrdersNested.Navigator screenOptions={{headerShown: false}}>
       <BottomTabsOrdersNested.Screen name="Orders" component={Orders} />
-      <BottomTabsOrdersNested.Screen name="OrderDetails" component={OrderDetails} />
+      <BottomTabsOrdersNested.Screen
+        name="OrderDetails"
+        component={OrderDetails}
+      />
+      <BottomTabsOrdersNested.Screen
+        name="Charges"
+        component={Charges}
+      />
+      <BottomTabsOrdersNested.Screen
+        name="Submit"
+        component={Submit}
+      />
     </BottomTabsOrdersNested.Navigator>
   );
 }

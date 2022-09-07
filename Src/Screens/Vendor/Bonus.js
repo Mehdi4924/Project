@@ -29,7 +29,7 @@ export default function Bonus() {
             name={'Redeem'}
             textStyles={styles.textStyles}
             buttonStyles={styles.buttonStyles1}
-            onPress={() => nul}
+            onPress={() => null}
           />
         </View>
       </ScrollView>

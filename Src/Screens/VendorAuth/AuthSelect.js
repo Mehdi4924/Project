@@ -24,14 +24,14 @@ export default function AuthSelect(props) {
             name={'Login'}
             textStyles={styles.textStyles}
             buttonStyles={styles.buttonStyles}
-            onPress={() => props.navigation.navigate('Login')}
+            onPress={() => props.navigation.replace('Login')}
           />
           <Button
             isLoading={false}
             name={'Signup'}
             textStyles={styles.textStyles}
             buttonStyles={styles.buttonStyles}
-            onPress={() => props.navigation.navigate('AuthSelect')}
+            onPress={() => props.navigation.replace('Signup')}
           />
         </View>
       </View>

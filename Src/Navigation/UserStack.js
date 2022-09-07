@@ -59,7 +59,7 @@ function UserNavigatorScreens() {
               onPress={() =>
                 navigation.canGoBack()
                   ? navigation.goBack()
-                  : navigation.navigate('BottomTabsNested')
+                  : navigation.navigate('BottomTabsNested',{screen:"DashBoard"})
               }
             />
           ),
@@ -77,7 +77,7 @@ function UserNavigatorScreens() {
               onPress={() =>
                 navigation.canGoBack()
                   ? navigation.goBack()
-                  : navigation.navigate('BottomTabsOrders',{screen:"Orders"})
+                  : navigation.navigate('BottomTabsOrders', {screen: 'Orders'})
               }
             />
           ),
@@ -92,7 +92,13 @@ function UserNavigatorScreens() {
               imgSrc={require('../Assets/profile.png')}
               {...props}
               name="Profile"
-              onPress={() => navigation.navigate('BottomTabsProfile')}
+              onPress={() =>
+                navigation.canGoBack()
+                  ? navigation.goBack()
+                  : navigation.navigate('BottomTabsProfile', {
+                      screen: 'Profile',
+                    })
+              }
             />
           ),
         }}

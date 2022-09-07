@@ -184,7 +184,7 @@ export default function OrderDetails(props) {
           name={'Work Is Done'}
           textStyles={styles.textStyles3}
           buttonStyles={styles.buttonStyles3}
-          onPress={() => props.navigation.navigate('OrderDetails')}
+          onPress={() => props.navigation.navigate('Charges')}
         />
         <Button
           isLoading={false}
