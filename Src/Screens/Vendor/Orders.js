@@ -95,7 +95,7 @@ export default function Orders(props) {
                 name={'Refresh'}
                 textStyles={styles.textStyles}
                 buttonStyles={styles.buttonStyles1}
-                onPress={() => nul}
+                onPress={() => null}
               />
               <TouchableOpacity>
                 <Image
@@ -127,7 +127,7 @@ export default function Orders(props) {
                 name={'Message'}
                 textStyles={styles.textStyles1}
                 buttonStyles={styles.buttonStyles}
-                onPress={() => nul}
+                onPress={() => null}
                 icon={true}
                 imageSource={require('../../Assets/message.png')}
               />
@@ -136,7 +136,7 @@ export default function Orders(props) {
                 name={'Call Customer'}
                 textStyles={styles.textStyles1}
                 buttonStyles={styles.buttonStyles}
-                onPress={() => nul}
+                onPress={() => null}
                 icon={true}
                 imageSource={require('../../Assets/Path3.png')}
               />
